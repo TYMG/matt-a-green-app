@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "matt-a-green"
+  "defaultProject": "matt-a-green",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

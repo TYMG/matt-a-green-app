@@ -12,11 +12,17 @@ import { DraftCenterComponent } from './draft-center/draft-center.component';
 import { QueensOverviewComponent } from './queens-overview/queens-overview.component';
 import { QueenDetailsComponent } from './queen-details/queen-details.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
     CommonModule,
-    RpdrFLRoutingModule
+    RpdrFLRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [HomeComponent, LoginComponent, UserProfileComponent, LeagueOverviewComponent, TeamOverviewComponent, DraftCenterComponent, QueensOverviewComponent, QueenDetailsComponent, PageNotFoundComponent]
 })

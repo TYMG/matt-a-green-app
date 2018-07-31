@@ -1,14 +1,17 @@
 # Matt A Green
 
-
-
 [TOC]
 
 ## Overview
 
-### Tech Notes
+## Tech Notes
 
-#### Angular CLI Notes
+### Implementation Details:
+* I added the NGRX Schematics to the CLI using the followuing command:
+
+  [`ng config cli.defaultCollection @ngrx/schematics`](https://github.com/ngrx/platform/blob/master/docs/schematics/README.md)
+
+### Angular CLI Notes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
 
