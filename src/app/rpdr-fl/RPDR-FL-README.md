@@ -48,6 +48,13 @@ The default route will be ‘rpdr-fl’
   * Number of Teams
   * Teams
   * Weekly Results
+* Weekly Results
+  * Week Number
+  * Episode Name
+  * Winner of Maxie Challenge
+  * Winner of Mini Challenge 
+  * Bottom 2 Queens
+  * Queen Eliminated
 * User
   * Id
   * User Name
@@ -68,7 +75,53 @@ The default route will be ‘rpdr-fl’
   * DOB
   * DOB Location
   * Years in Drag
+  * Total Points
   * Maxi Challenge Wins
   * Mini Challenge Wins
   * Bottom 2 Appearances
   * Lip Sync Won
+
+States:
+
+* Router
+* User - Once the user logs in
+* League
+* Team
+* Queens
+
+## To Do:
+
+### Front End Tasks
+
+- [ ] Implement Screens
+  - [ ] Home
+  - [ ] Login
+    - [ ] Implement Login Functionality
+  - [ ] Profile
+  - [ ] League Overview
+  - [ ] Team Overview
+  - [ ] Draft Central
+  - [ ] Queens Overview
+  - [ ] Queen Detail
+- [ ] Implement NGRX
+  - [ ] Implement Initial State Management
+  - [ ] Decide the various 'states' within the store
+  - [ ] Create Actions, Reducers, Effects for each store state
+    - [ ] Router
+    - [ ] User
+    - [ ] League
+    - [ ] Team
+    - [ ] Queens
+- [ ] Implement Services
+  - [ ] Determine and create endpoints 
+
+### Back-End Tasks
+
+- [ ] Create Data Layer
+  - [ ] Create AWS DynamoDB Table
+  - [ ] Determine Document Structure
+- [ ] Create API Layer
+  - [ ] Create API Endpoints
+  - [ ] Associate API with Back-End Logic Calls
+- [ ] Create Back-End Logic
+  - [ ] Create Lambda Functions for API Calls
