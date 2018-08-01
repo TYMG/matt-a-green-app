@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -16,7 +17,7 @@ import { DraftCenterComponent } from './draft/components/draft-center/draft-cent
 import { QueensOverviewComponent } from './queens/components/queens-overview/queens-overview.component';
 import { QueenDetailsComponent } from './queens/components/queen-details/queen-details.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
-import { reducers, metaReducers } from './state';
+import { reducers, metaReducers } from './reducers';
 import { environment } from '../../environments/environment';
 
 
@@ -25,9 +26,19 @@ import { environment } from '../../environments/environment';
     CommonModule,
     RpdrFLRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     NgbModule
   ],
-  declarations: [HomeComponent, LoginComponent, UserProfileComponent, LeagueOverviewComponent, TeamOverviewComponent, DraftCenterComponent, QueensOverviewComponent, QueenDetailsComponent, PageNotFoundComponent]
+  declarations: [
+    HomeComponent,
+    LoginComponent,
+    UserProfileComponent,
+    LeagueOverviewComponent,
+    TeamOverviewComponent,
+    DraftCenterComponent,
+    QueensOverviewComponent,
+    QueenDetailsComponent,
+    PageNotFoundComponent
+  ]
 })
 export class RpdrFlModule { }

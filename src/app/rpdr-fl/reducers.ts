@@ -5,8 +5,8 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
-import * as fromUser from './user.reducer';
+import { environment } from '../../environments/environment';
+import * as fromUser from './user/reducers/user.reducer';
 
 export interface State {
 
