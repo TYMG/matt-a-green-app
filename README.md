@@ -39,3 +39,23 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Further help
+* To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+Bootstrap Tutorial
+
+[Link](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a)
+
+Bootstrap Theme
+[https://bootswatch.com/cyborg/#top]
+
+Prettier Tutorial
+1. Add prettier to your project:
+    npm install prettier --save-dev --save-exact
+2. Verify by running against a file:
+    npx prettier --write src/index.js
+3. Run prettier when commiting files:
+    npm install pretty-quick husky --save-dev
+    Then edit package.json:
+    `{ "scripts": { "precommit": "pretty-quick --staged" } }`
