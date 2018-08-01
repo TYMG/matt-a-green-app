@@ -1,6 +1,6 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { User } from '../shared/model/';
-import { UserActions, UserActionTypes } from './user.actions';
+import { User } from '../models/user.model';
+import { UserActions, UserActionTypes } from '../actions/user.actions';
 
 export interface State extends EntityState<User> {
   // additional entities state properties

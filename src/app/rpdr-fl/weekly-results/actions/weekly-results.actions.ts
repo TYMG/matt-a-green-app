@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-import { WeeklyResults } from './weekly-results.model';
+import { WeeklyResult } from '../models/weekly-results.model';
 
 export enum WeeklyResultsActionTypes {
   LoadWeeklyResultss = '[WeeklyResults] Load WeeklyResultss',
@@ -18,43 +18,43 @@ export enum WeeklyResultsActionTypes {
 export class LoadWeeklyResultss implements Action {
   readonly type = WeeklyResultsActionTypes.LoadWeeklyResultss;
 
-  constructor(public payload: { weeklyResultss: WeeklyResults[] }) {}
+  constructor(public payload: { weeklyResultss: WeeklyResult[] }) {}
 }
 
 export class AddWeeklyResults implements Action {
   readonly type = WeeklyResultsActionTypes.AddWeeklyResults;
 
-  constructor(public payload: { weeklyResults: WeeklyResults }) {}
+  constructor(public payload: { weeklyResults: WeeklyResult }) {}
 }
 
 export class UpsertWeeklyResults implements Action {
   readonly type = WeeklyResultsActionTypes.UpsertWeeklyResults;
 
-  constructor(public payload: { weeklyResults: WeeklyResults }) {}
+  constructor(public payload: { weeklyResults: WeeklyResult }) {}
 }
 
 export class AddWeeklyResultss implements Action {
   readonly type = WeeklyResultsActionTypes.AddWeeklyResultss;
 
-  constructor(public payload: { weeklyResultss: WeeklyResults[] }) {}
+  constructor(public payload: { weeklyResultss: WeeklyResult[] }) {}
 }
 
 export class UpsertWeeklyResultss implements Action {
   readonly type = WeeklyResultsActionTypes.UpsertWeeklyResultss;
 
-  constructor(public payload: { weeklyResultss: WeeklyResults[] }) {}
+  constructor(public payload: { weeklyResultss: WeeklyResult[] }) {}
 }
 
 export class UpdateWeeklyResults implements Action {
   readonly type = WeeklyResultsActionTypes.UpdateWeeklyResults;
 
-  constructor(public payload: { weeklyResults: Update<WeeklyResults> }) {}
+  constructor(public payload: { weeklyResults: Update<WeeklyResult> }) {}
 }
 
 export class UpdateWeeklyResultss implements Action {
   readonly type = WeeklyResultsActionTypes.UpdateWeeklyResultss;
 
-  constructor(public payload: { weeklyResultss: Update<WeeklyResults>[] }) {}
+  constructor(public payload: { weeklyResultss: Update<WeeklyResult>[] }) {}
 }
 
 export class DeleteWeeklyResults implements Action {

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-import { Draft } from './draft.model';
+import { Draft } from '../models/draft.model';
 
 export enum DraftActionTypes {
   LoadDrafts = '[Draft] Load Drafts',

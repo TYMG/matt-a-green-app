@@ -1,12 +1,12 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { WeeklyResults } from '../models/weekly-results.model';
-import { WeeklyResultsActions, WeeklyResultsActionTypes } from './weekly-results.actions';
+import { WeeklyResult } from '../models/weekly-results.model';
+import { WeeklyResultsActions, WeeklyResultsActionTypes } from '../actions/weekly-results.actions';
 
-export interface State extends EntityState<WeeklyResults> {
+export interface State extends EntityState<WeeklyResult> {
   // additional entities state properties
 }
 
-export const adapter: EntityAdapter<WeeklyResults> = createEntityAdapter<WeeklyResults>();
+export const adapter: EntityAdapter<WeeklyResult> = createEntityAdapter<WeeklyResult>();
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
