@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TeamOverviewComponent } from './components/team-overview/team-overview.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
-    {path: 'teams/:team-name', component: TeamOverviewComponent}
+      {path: 'profile', component: UserProfileComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TeamRoutingModule { }
+export class UserRoutingModule { }

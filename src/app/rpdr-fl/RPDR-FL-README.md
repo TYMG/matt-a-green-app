@@ -133,3 +133,7 @@ States:
 * ng g en team
 * ng g r team --group --module team --reducers ../reducers.ts
 * ng g ef team --module team --group
+
+ng g r weekly-results --group --module weekly-results --reducers ../reducers.ts
+
+ng g r draft --group --module draft --reducers ../reducers.ts

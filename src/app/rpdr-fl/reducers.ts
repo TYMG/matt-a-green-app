@@ -10,6 +10,7 @@ import * as fromUser from './user/reducers/user.reducer';
 import * as fromTeam from './team/reducers/team.reducer';
 import * as fromQueens from './queens/reducers/queens.reducer';
 import * as fromLeague from './league/reducers/league.reducer';
+import * as fromWeeklyResults from './weekly-results/weekly-results.reducer';
 
 
 export interface State {
@@ -17,7 +18,8 @@ export interface State {
   user: fromUser.State;
   team: fromTeam.State;
   queens: fromQueens.State;
-  league: fromLeague.State;
+  league: fromLeague.State;  weeklyResults: fromWeeklyResults.State;
+
 
 }
 
@@ -27,6 +29,7 @@ export const reducers: ActionReducerMap<State> = {
   team: fromTeam.reducer,
   queens: fromQueens.reducer,
   league: fromLeague.reducer,
+  weeklyResults: fromWeeklyResults.reducer,
 };
 
 
