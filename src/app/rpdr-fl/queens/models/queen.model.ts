@@ -9,5 +9,5 @@ export interface Queen {
     maxiChallengeWins: number;
     miniChallengeWins: number;
     bottomTwoApperances: number;
-    lipsyncsWon: number
+    lipsyncsWon: number;
 }

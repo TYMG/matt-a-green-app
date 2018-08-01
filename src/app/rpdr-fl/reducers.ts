@@ -7,15 +7,26 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as fromUser from './user/reducers/user.reducer';
+import * as fromTeam from './team/reducers/team.reducer';
+import * as fromQueens from './queens/reducers/queens.reducer';
+import * as fromLeague from './league/reducers/league.reducer';
+
 
 export interface State {
 
   user: fromUser.State;
+  team: fromTeam.State;
+  queens: fromQueens.State;
+  league: fromLeague.State;
+
 }
 
 export const reducers: ActionReducerMap<State> = {
 
   user: fromUser.reducer,
+  team: fromTeam.reducer,
+  queens: fromQueens.reducer,
+  league: fromLeague.reducer,
 };
 
 

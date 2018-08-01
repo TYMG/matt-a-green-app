@@ -9,16 +9,16 @@ An Angular Web App for RuPaul's Drag Race Fantasy League App (RPDR-FL). All play
 ###  Rules
 
 * 50 Points for winning the race
-* 25 Points for winning Ms Congeniality 
+* 25 Points for winning Ms Congeniality
 * 7 Points for a Max Challenge Win
 * 3 Points for a Mini Challenge Win
 * 1 Point for winning a lip sync
 * -2 Points for Bottom Two
-* -5 Points for Elimination  
+* -5 Points for Elimination
 
 ### Screens
 
-* Home - Landing page for users; here users can catch up on information through aggregated content 
+* Home - Landing page for users; here users can catch up on information through aggregated content
 * Login
 * Profile
 * League Overview - Displays League standings
@@ -35,7 +35,7 @@ The default route will be ‘rpdr-fl’
 * ‘login’ - LoginComponent (created)
 * ‘profile’ - UserProfileComponent (created)
 * ‘/overview/’ - LeagueOverviewComponent (created)
-* ‘/{team name}/ - TeamOverviewComponent name is the path variable, that loads the  
+* ‘/{team name}/ - TeamOverviewComponent name is the path variable, that loads the
 * ‘/draft-center/’ - DraftCenterComponent
 * ‘/meet-the-queens/ - QueensOverviewComponent
 * /meet-the-queens/{queen-name} - SpecificQueenOverviewComponent
@@ -52,7 +52,7 @@ The default route will be ‘rpdr-fl’
   * Week Number
   * Episode Name
   * Winner of Maxie Challenge
-  * Winner of Mini Challenge 
+  * Winner of Mini Challenge
   * Bottom 2 Queens
   * Queen Eliminated
 * User
@@ -113,7 +113,7 @@ States:
     - [ ] Team
     - [ ] Queens
 - [ ] Implement Services
-  - [ ] Determine and create endpoints 
+  - [ ] Determine and create endpoints
 
 ### Back-End Tasks
 
@@ -125,3 +125,11 @@ States:
   - [ ] Associate API with Back-End Logic Calls
 - [ ] Create Back-End Logic
   - [ ] Create Lambda Functions for API Calls
+
+
+# Commands
+* ng g ef app --module rpdr-fl.module.ts --root
+* ng g module team --routing --flat
+* ng g en team
+* ng g r team --group --module team --reducers ../reducers.ts
+* ng g ef team --module team --group
