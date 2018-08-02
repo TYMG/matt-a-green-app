@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'league', loadChildren: './league/league.module#LeagueModule' },
   { path: 'team', loadChildren: './team/team.module#TeamModule' },
   { path: 'user', loadChildren: './user/user.module#UserModule' },
+  { path: 'meet-the-queens', loadChildren: './queens/queens.module#QueensModule' },
   { path: 'weekly-results', loadChildren: './weekly-results/weekly-results.module#'},
   { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent },

@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Overriding Bootstrap Styles*/
+.bg-pink{background-color:#F3969A !important}
+
+.border-pink{border-color:#F3969A !important}

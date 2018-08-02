@@ -35,6 +35,7 @@ import { reducers, metaReducers } from './reducers';
 import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { AppEffects } from './app.effects';
   declarations: [
     HomeComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent
   ]
 })
 export class RpdrFlModule { }
