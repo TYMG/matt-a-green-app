@@ -7,6 +7,9 @@ import * as fromQueens from './reducers/queens.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { QueensEffects } from './effects/queens.effects';
 
+import { QueensOverviewComponent } from './components/queens-overview/queens-overview.component';
+import { QueenDetailsComponent } from './components/queen-details/queen-details.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +17,6 @@ import { QueensEffects } from './effects/queens.effects';
     StoreModule.forFeature('queens', fromQueens.reducer),
     EffectsModule.forFeature([QueensEffects])
   ],
-  declarations: []
+  declarations: [QueensOverviewComponent, QueenDetailsComponent]
 })
 export class QueensModule { }

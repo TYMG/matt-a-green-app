@@ -5,12 +5,14 @@ import { UserRoutingModule } from './user-routing.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromUser from './reducers/user.reducer';
 
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 @NgModule({
   imports: [
     CommonModule,
     UserRoutingModule,
-        StoreModule.forFeature('user', fromUser.reducer),
+    StoreModule.forFeature('user', fromUser.reducer),
   ],
-  declarations: []
+  declarations: [UserProfileComponent]
 })
 export class UserModule { }
