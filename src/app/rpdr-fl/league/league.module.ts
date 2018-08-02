@@ -7,6 +7,9 @@ import * as fromLeague from './reducers/league.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { LeagueEffects } from './effects/league.effects';
 
+import { LeagueOverviewComponent } from './components/league-overview/league-overview.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +17,6 @@ import { LeagueEffects } from './effects/league.effects';
     StoreModule.forFeature('league', fromLeague.reducer),
     EffectsModule.forFeature([LeagueEffects])
   ],
-  declarations: []
+  declarations: [LeagueOverviewComponent]
 })
 export class LeagueModule { }

@@ -128,12 +128,15 @@ States:
 
 
 # Commands
+
+##
+
+* To run the server: `ng serve --poll=2000`
+
 * ng g ef app --module rpdr-fl.module.ts --root
 * ng g module team --routing --flat
 * ng g en team
 * ng g r team --group --module team --reducers ../reducers.ts
 * ng g ef team --module team --group
 
-ng g r weekly-results --group --module weekly-results --reducers ../reducers.ts
 
-ng g r draft --group --module draft --reducers ../reducers.ts

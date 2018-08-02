@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { DraftCenterComponent } from './components/draft-center/draft-center.component';
-
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  {path: '', component: DraftCenterComponent}
+  {path:'' , component: MainComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DraftRoutingModule { }
+export class MagAppRoutingModule { }
