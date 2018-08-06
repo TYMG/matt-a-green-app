@@ -6,6 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import * as fromWeeklyResults from './reducers/weekly-results.reducer';
 import { WeeklyResultHomeComponent } from './components/weekly-result-home/weekly-result-home.component';
 
+
+
 @NgModule({
   imports: [
     CommonModule,

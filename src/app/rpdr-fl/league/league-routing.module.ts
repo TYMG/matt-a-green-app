@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LeagueOverviewComponent } from './components/league-overview/league-overview.component';
 
 const routes: Routes = [
-  { path: 'overview', component: LeagueOverviewComponent }
+  { path: '', component: LeagueOverviewComponent }
 ];
 
 @NgModule({

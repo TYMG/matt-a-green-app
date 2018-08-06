@@ -10,6 +10,8 @@ import { QueensEffects } from './effects/queens.effects';
 import { QueensOverviewComponent } from './components/queens-overview/queens-overview.component';
 import { QueenDetailsComponent } from './components/queen-details/queen-details.component';
 
+
+
 @NgModule({
   imports: [
     CommonModule,

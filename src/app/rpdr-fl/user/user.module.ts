@@ -7,6 +7,7 @@ import * as fromUser from './reducers/user.reducer';
 
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
