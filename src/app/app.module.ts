@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RpdrFlModule } from './rpdr-fl/rpdr-fl.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -13,6 +15,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RpdrFlModule,
     NgbModule.forRoot()
   ],
   providers: [],

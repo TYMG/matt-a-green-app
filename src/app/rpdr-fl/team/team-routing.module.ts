@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TeamOverviewComponent } from './components/team-overview/team-overview.component';
 
 const routes: Routes = [
-    {path: 'teams/:team-name', component: TeamOverviewComponent}
+    {path: ':team-name', component: TeamOverviewComponent}
 ];
 
 @NgModule({

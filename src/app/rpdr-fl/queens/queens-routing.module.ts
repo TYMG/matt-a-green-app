@@ -5,8 +5,8 @@ import { QueensOverviewComponent } from './components/queens-overview/queens-ove
 import { QueenDetailsComponent } from './components/queen-details/queen-details.component';
 
 const routes: Routes = [
-    {path: 'meet-the-queens', component: QueensOverviewComponent},
-    {path: 'meet-the-queens/:queen-name', component: QueenDetailsComponent},   
+    {path: '', component: QueensOverviewComponent},
+    {path: ':name', component: QueenDetailsComponent},   
 ];
 
 @NgModule({
