@@ -65,3 +65,6 @@ Animation:
 
 NG Scroll:
 [3rd party library (ng2-page-scroll) not working in Angular-Cli project](https://stackoverflow.com/questions/39040140/3rd-party-library-ng2-page-scroll-not-working-in-angular-cli-project?rq=1)
+
+Authentication:
+[Angular 6 JWT Authentication](http://jasonwatmore.com/post/2018/05/23/angular-6-jwt-authentication-example-tutorial)
