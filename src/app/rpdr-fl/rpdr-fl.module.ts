@@ -23,6 +23,7 @@ import { AppEffects } from './app.effects';
 import { fakeBackendProvider } from './core/helpers/fake-backend';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
+import { RegisterComponent } from './auth/components/register/register.component';
 
 
 
@@ -49,6 +50,7 @@ import { ErrorInterceptor } from './core/helpers/error.interceptor';
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
+    RegisterComponent,
   ],
   bootstrap: [AppComponent]
 })
