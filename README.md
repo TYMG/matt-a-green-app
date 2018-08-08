@@ -68,3 +68,13 @@ NG Scroll:
 
 Authentication:
 [Angular 6 JWT Authentication](http://jasonwatmore.com/post/2018/05/23/angular-6-jwt-authentication-example-tutorial)
+[Angular 6 - User Registration and Login Example & Tutorial](http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial)
+
+Font Awesome:
+[Using Package Managers](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers)
+[SO: Font Awesome w/ Angular](https://stackoverflow.com/questions/48915830/fontawesome-5-with-angular-2?noredirect=1&lq=1)
+[Fontawesome ](https://fontawesome.com/how-to-use/on-the-web/using-with/angular)
+### Install Scripts
+`npm i --save @fortawesome/fontawesome-svg-core`
+`npm i --save @fortawesome/free-solid-svg-icons`
+`npm i --save @fortawesome/angular-fontawesome`
