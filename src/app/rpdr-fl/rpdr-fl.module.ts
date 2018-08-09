@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
@@ -24,6 +24,9 @@ import { fakeBackendProvider } from './core/helpers/fake-backend';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { RegisterComponent } from './auth/components/register/register.component';
+import { UserService } from './core/services/user.service';
+import { AuthenticationService } from './core/services/authentication.service';
+import { AlertService } from './core/services/alert.service';
 
 
 
@@ -40,7 +43,11 @@ import { RegisterComponent } from './auth/components/register/register.component
     CoreModule,
     RpdrFLRoutingModule,
   ],
-  providers:[
+  providers: [
+
+    UserService,
+    AuthenticationService,
+    AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

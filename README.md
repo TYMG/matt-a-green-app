@@ -68,7 +68,7 @@ NG Scroll:
 
 Authentication:
 [Angular 6 JWT Authentication](http://jasonwatmore.com/post/2018/05/23/angular-6-jwt-authentication-example-tutorial)
-[Angular 6 - User Registration and Login Example & Tutorial](http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial)
+[Angular 6 - User Registration and Login Example & Tutorial](http://jasonwatmore.com/posng st/2018/05/16/angular-6-user-registration-and-login-example-tutorial)
 
 In Angular CLI projects you should use environment instead of config, refer to the CLI project on this line and this line.
 

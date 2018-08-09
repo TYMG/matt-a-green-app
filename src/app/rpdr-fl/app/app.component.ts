@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'rpdr-fl-app',
   template: `
   <app-header></app-header>
   <router-outlet></router-outlet>
