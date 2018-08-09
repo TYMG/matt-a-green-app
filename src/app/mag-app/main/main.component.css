@@ -1,8 +1,12 @@
+#main__content {
+  padding: 3% 0;
+}
+
 .btn.btn-pink {
-    background-color: #F3969A;
+  background-color: #f3969a;
 }
 
 a.main__rpdr-fl-link {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }

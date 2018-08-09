@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,6 +16,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RpdrFlModule,
     NgbModule.forRoot()
