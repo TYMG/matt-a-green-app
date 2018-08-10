@@ -87,3 +87,7 @@ Font Awesome:
 
 Bootstrap Verticle Centering
 [SO: Verticle Alignment in Bootstrap](https://stackoverflow.com/questions/41265182/vertical-alignment-in-bootstrap-4/41464397#41464397)
+
+Animation
+[Guide toe Dynamic Angular Animations](https://blog.angularindepth.com/total-guide-to-dynamic-angular-animations-that-can-be-toggled-at-runtime-be5bb6778a0a)
+[`route.animations.ts`](https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/src/app/core/animations/route.animations.ts)
