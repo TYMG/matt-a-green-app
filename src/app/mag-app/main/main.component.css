@@ -3,7 +3,14 @@
 } */
 
 #main__navbar {
-  margin: 10px 0;
+  position: sticky;
+  top: 0;
+  margin: 2.5vh 0;
+  height: 10vh;
+}
+
+#main__content {
+  color: white;
 }
 
 .btn.btn-pink {
@@ -21,4 +28,12 @@ a.navbar-brand.bigger {
 
 a.nav-link {
   font-size: 1.5rem;
+}
+
+app-about-me {
+  height: 100vh;
+}
+
+app-career {
+  height: 100vh;
 }

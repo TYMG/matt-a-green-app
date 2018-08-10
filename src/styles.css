@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+div.std-cmp-height {
+  height: 90vh;
+}
+
 /*Overriding Bootstrap Styles*/
 .bg-pink {
   background-color: #f3969a !important;

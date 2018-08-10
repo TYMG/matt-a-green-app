@@ -1,19 +1,23 @@
-#about-me__main {
+#home__main {
   width: 100%;
-  height: 750px;
+  height: 85vh;
 }
 
 @media (min-width: 950px) and (max-width: 1400px) {
-  #about-me__main {
-    height: 550px;
+  #home__main {
+    height: 83vh;
   }
 }
 
-@media (max-width: 750px) {
-  #about-me__main {
-    height: 850px;
+@media (max-width: 950px) {
+  #home__main {
+    height: 95vh;
   }
 }
+
+/* #main__container {
+  background-color: lightgray;
+} */
 
 #jumbotron-left__content div {
   padding: 1% 0;
