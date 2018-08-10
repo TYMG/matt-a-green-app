@@ -4,6 +4,10 @@ div.std-cmp-height {
   height: 90vh;
 }
 
+.padding-5 {
+  padding: 5%;
+}
+
 /*Overriding Bootstrap Styles*/
 .bg-pink {
   background-color: #f3969a !important;
