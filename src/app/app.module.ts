@@ -6,7 +6,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
-import { RpdrFlModule } from './rpdr-fl/rpdr-fl.module';
 
 import { AppComponent } from './app.component';
 
@@ -19,7 +18,6 @@ import { AppComponent } from './app.component';
     FlexLayoutModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RpdrFlModule,
     NgbModule
   ],
   providers: [],
