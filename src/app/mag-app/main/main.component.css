@@ -1,8 +1,39 @@
+/* #main__content {
+  padding-top: 24px;
+} */
+
+#main__navbar {
+  position: sticky;
+  top: 0;
+  margin: 2.5vh 0;
+  height: 10vh;
+}
+
+#main__content {
+  color: white;
+}
+
 .btn.btn-pink {
-    background-color: #F3969A;
+  background-color: #f3969a;
 }
 
 a.main__rpdr-fl-link {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
+}
+
+a.navbar-brand.bigger {
+  font-size: 2.5rem;
+}
+
+a.nav-link {
+  font-size: 1.5rem;
+}
+
+app-about-me {
+  height: 100vh;
+}
+
+app-career {
+  height: 100vh;
 }

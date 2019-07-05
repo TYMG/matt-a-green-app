@@ -1,6 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*Overriding Bootstrap Styles*/
-.bg-pink{background-color:#F3969A !important}
+div.std-cmp-height {
+  height: 90vh;
+}
 
-.border-pink{border-color:#F3969A !important}
+.padding-5 {
+  padding: 5%;
+}
+
+/*Overriding Bootstrap Styles*/
+.bg-pink {
+  background-color: #f3969a !important;
+}
+
+.border-pink {
+  border-color: #f3969a !important;
+}

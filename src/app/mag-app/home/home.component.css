@@ -1,0 +1,28 @@
+#home__main {
+  width: 100%;
+  height: 85vh;
+}
+
+@media (min-width: 950px) and (max-width: 1400px) {
+  #home__main {
+    height: 83vh;
+  }
+}
+
+@media (max-width: 950px) {
+  #home__main {
+    height: 95vh;
+  }
+}
+
+/* #main__container {
+  background-color: lightgray;
+} */
+
+#jumbotron-left__content div {
+  padding: 1% 0;
+}
+
+.no-margin {
+  margin: 0;
+}

@@ -2,8 +2,10 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// Reference: https://github.com/cornflourblue/angular-6-registration-login-example-cli/blob/master/src/environments/environment.ts#L7
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://localhost:4000'
 };
 
 /*
