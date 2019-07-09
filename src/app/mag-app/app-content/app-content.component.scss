@@ -1,7 +1,17 @@
+#app-content__main {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 #app-content__nav-bar {
   background-color: aquamarine;
   width: 100%;
 }
+#app-content__scroll-content {
+  background-color: coral;
+  width: 100%;
+}
+
 #app-content__nav-bar * {
   width: 100%;
 }

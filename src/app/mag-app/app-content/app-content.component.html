@@ -1,11 +1,14 @@
-<div id="app-content__main" class="full-screen row">
+<div id="app-content__main" class="full row">
   <div
     id="app-content__nav-bar"
     class="col-3  d-flex flex-column p-4 align-items-center"
   >
     <mag-navbar-head-image id="nav-bar__pic"> </mag-navbar-head-image>
     <mag-navbar-nameplate id="nav-bar__nameplate"></mag-navbar-nameplate>
-    <app-navbar-nav id="nav-bar__nav-list"></app-navbar-nav>
+    <mag-navbar-nav id="nav-bar__nav-list"></mag-navbar-nav>
   </div>
-  <div class="col p-4"></div>
+  <mag-nav-bar-content
+    class="col p-4"
+    id="app-content__scroll-content"
+  ></mag-nav-bar-content>
 </div>
