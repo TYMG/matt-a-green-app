@@ -15,6 +15,12 @@ body {
   width: 100%;
 }
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 div.std-cmp-height {
   height: 90vh;
 }
@@ -30,4 +36,13 @@ div.std-cmp-height {
 
 .border-pink {
   border-color: #f3969a !important;
+}
+
+.stroke {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  color: #0c0b0b;
+  -webkit-text-stroke: 1px #e5e5e5;
 }
