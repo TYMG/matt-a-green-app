@@ -1,5 +1,11 @@
-<div id="navbar__main">
-  <mag-about-me></mag-about-me>
-  <mag-career></mag-career>
-  <mag-contact></mag-contact>
+<div id="navbar__main" scrollSpy [spiedTags]="['DIV']">
+  <div id="about-me-section" class="height-100">
+    <mag-about-me></mag-about-me>
+  </div>
+  <div id="career-section" class="height-100">
+    <mag-career></mag-career>
+  </div>
+  <div id="contact-section" class="height-100">
+    <mag-contact></mag-contact>
+  </div>
 </div>

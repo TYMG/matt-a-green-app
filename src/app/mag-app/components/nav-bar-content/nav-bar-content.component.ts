@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from "@angular/core";
+import { EventEmitter } from "protractor";
 
 @Component({
-  selector: 'mag-nav-bar-content',
-  templateUrl: './nav-bar-content.component.html',
-  styleUrls: ['./nav-bar-content.component.scss']
+  selector: "mag-nav-bar-content",
+  templateUrl: "./nav-bar-content.component.html",
+  styleUrls: ["./nav-bar-content.component.scss"]
 })
 export class NavBarContentComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  currentSection = "section1";
+
+  onSectionChange(sectionId: string) {
+    this.currentSection = sectionId;
+    console.log(sectionId);
   }
 
+  scrollTo(section) {
+    document.querySelector("#" + section).scrollIntoView();
+  }
 }

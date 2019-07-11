@@ -12,7 +12,8 @@ import { NavBarHeadImageComponent } from "./components/nav-bar-head-image/nav-ba
 import { NavBarNameplateComponent } from "./components/nav-bar-nameplate/nav-bar-nameplate.component";
 import { NavBarNavComponent } from "./components/nav-bar-nav/nav-bar-nav.component";
 import { NavBarContentComponent } from "./components/nav-bar-content/nav-bar-content.component";
-import { ContactComponent } from './components/content/contact/contact.component';
+import { ContactComponent } from "./components/content/contact/contact.component";
+import { ScrollSpyDirective } from "./scroll-spy.directive";
 
 @NgModule({
   imports: [CommonModule, FlexLayoutModule, MagAppRoutingModule],
@@ -26,7 +27,8 @@ import { ContactComponent } from './components/content/contact/contact.component
     NavBarNameplateComponent,
     NavBarNavComponent,
     NavBarContentComponent,
-    ContactComponent
+    ContactComponent,
+    ScrollSpyDirective
   ]
 })
 export class MagAppModule {}

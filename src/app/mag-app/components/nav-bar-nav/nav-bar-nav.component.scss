@@ -1,0 +1,20 @@
+div,
+nav {
+  height: 100%;
+}
+a.nav-link {
+  font-size: 5vh;
+  align-items: center;
+  height: 25%;
+}
+a.nav-link:hover {
+  color: white;
+}
+
+.nav-pills .nav-link {
+  color: pink;
+}
+
+#navbar-nav.active {
+  color: pink;
+}
