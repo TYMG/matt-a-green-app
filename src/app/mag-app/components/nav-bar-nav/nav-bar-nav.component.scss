@@ -8,7 +8,12 @@ a.nav-link {
   height: 25%;
 }
 a.nav-link:hover {
-  color: white;
+  color: black;
+  text-shadow: 2px 2px 4px whitesmoke;
+}
+
+a.active-link {
+  text-shadow: 2px 2px 4px whitesmoke;
 }
 
 .nav-pills .nav-link {

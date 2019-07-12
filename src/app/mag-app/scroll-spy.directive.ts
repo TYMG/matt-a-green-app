@@ -1,3 +1,4 @@
+import { ScrollSpyService } from "./scroll-spy.service";
 import {
   Directive,
   Injectable,
@@ -16,7 +17,10 @@ export class ScrollSpyDirective {
   @Output() public sectionChange = new EventEmitter<string>();
   private currentSection: string;
 
-  constructor(private _el: ElementRef) {}
+  constructor(
+    private _el: ElementRef,
+    private scrollSpyService: ScrollSpyService
+  ) {}
 
   @HostListener("scroll", ["$event"])
   onScroll(event: any) {
@@ -34,7 +38,7 @@ export class ScrollSpyDirective {
     }
     if (currentSection !== this.currentSection) {
       this.currentSection = currentSection;
-      this.sectionChange.emit(this.currentSection);
+      this.scrollSpyService.updateCurrentSectionSubject(currentSection);
     }
   }
 }

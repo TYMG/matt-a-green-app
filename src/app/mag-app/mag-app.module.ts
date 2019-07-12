@@ -14,6 +14,7 @@ import { NavBarNavComponent } from "./components/nav-bar-nav/nav-bar-nav.compone
 import { NavBarContentComponent } from "./components/nav-bar-content/nav-bar-content.component";
 import { ContactComponent } from "./components/content/contact/contact.component";
 import { ScrollSpyDirective } from "./scroll-spy.directive";
+import { ScrollSpyService } from "./scroll-spy.service";
 
 @NgModule({
   imports: [CommonModule, FlexLayoutModule, MagAppRoutingModule],
@@ -29,6 +30,7 @@ import { ScrollSpyDirective } from "./scroll-spy.directive";
     NavBarContentComponent,
     ContactComponent,
     ScrollSpyDirective
-  ]
+  ],
+  providers: [ScrollSpyService]
 })
 export class MagAppModule {}
