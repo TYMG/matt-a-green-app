@@ -3,19 +3,19 @@
     <nav id="navbar-nav" class="nav flex-column">
       <a
         class="nav-link stroke"
-        [class.active-link]="isSectionActive('about-me-section')"
+        [class.active-link]="'about-me-section' === currentSelection"
         href="#about-me__header"
         >About Me</a
       >
       <a
         class="nav-link stroke"
-        [class.active-link]="isSectionActive('career-section')"
+        [class.active-link]="'career-section' === currentSelection"
         href="#about-me__career"
         >Career</a
       >
       <a
         class="nav-link stroke"
-        [class.active-link]="isSectionActive('contact-section')"
+        [class.active-link]="'contact-section' === currentSelection"
         href="#contact"
         >Contact</a
       >
