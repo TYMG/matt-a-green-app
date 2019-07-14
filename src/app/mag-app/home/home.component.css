@@ -1,28 +1,26 @@
 #home__main {
+}
+
+#home__content-container {
+  width: 90%;
+}
+
+#home__image {
   width: 100%;
   height: 85vh;
 }
 
-@media (min-width: 950px) and (max-width: 1400px) {
-  #home__main {
-    height: 83vh;
-  }
-}
+#home__text {
+  /* Matt Green. Software Developer. */
 
-@media (max-width: 950px) {
-  #home__main {
-    height: 95vh;
-  }
-}
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: center;
 
-/* #main__container {
-  background-color: lightgray;
-} */
+  color: #0c0b0b;
 
-#jumbotron-left__content div {
-  padding: 1% 0;
-}
-
-.no-margin {
-  margin: 0;
+  -webkit-text-stroke: 1px #e5e5e5;
 }

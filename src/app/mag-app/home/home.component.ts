@@ -11,7 +11,7 @@ import {
 } from "@angular/animations";
 
 @Component({
-  selector: "app-home",
+  selector: "mag-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
   animations: [
