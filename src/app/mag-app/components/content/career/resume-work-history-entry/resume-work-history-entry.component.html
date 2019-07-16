@@ -1,0 +1,19 @@
+<div id="resume-work-history-entry__main" fxLayout="column">
+  <div fxLayout>
+    <p fxFlex>{{ title }}</p>
+    <strong fxFlexAlign="center"> {{ dates }}</strong>
+  </div>
+  <div>
+    <p>
+      {{ company }} |
+      {{ location ? location : "Washington, DC" }}
+    </p>
+  </div>
+  <br />
+  <p>
+    {{ blurb }}
+  </p>
+  <ul class="">
+    <li *ngFor="let task of tasks">{{ task }}</li>
+  </ul>
+</div>
