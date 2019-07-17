@@ -1,7 +1,7 @@
-<div id="resume-work-history-entry__main" fxLayout="column">
-  <div fxLayout>
-    <p fxFlex>{{ title }}</p>
-    <strong fxFlexAlign="center"> {{ dates }}</strong>
+<div class="p-3 roboto" id="resume-work-history-entry__main" fxLayout="column">
+  <div fxLayout fxLayout.lt-md="column">
+    <h3 fxFlex>{{ title }}</h3>
+    <h5 fxFlexAlign.gt-md="center">{{ dates }}</h5>
   </div>
   <div>
     <p>
@@ -9,7 +9,6 @@
       {{ location ? location : "Washington, DC" }}
     </p>
   </div>
-  <br />
   <p>
     {{ blurb }}
   </p>
