@@ -1,6 +1,7 @@
 div,
 nav {
   height: 100%;
+  width: 100%;
 }
 a.nav-link {
   font-size: 5vh;
@@ -14,6 +15,10 @@ a.nav-link:hover {
 
 .active-link {
   text-shadow: 2px 2px 4px whitesmoke;
+}
+
+.image {
+  height: 30px;
 }
 
 .nav-pills .nav-link {
