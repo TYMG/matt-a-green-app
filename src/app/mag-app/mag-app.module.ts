@@ -15,6 +15,7 @@ import { NavBarContentComponent } from "./components/nav-bar-content/nav-bar-con
 import { ContactComponent } from "./components/content/contact/contact.component";
 import { ScrollSpyDirective } from "./scroll-spy.directive";
 import { ScrollSpyService } from "./scroll-spy.service";
+import { ResumeWorkHistoryEntryComponent } from './components/content/career/resume-work-history-entry/resume-work-history-entry.component';
 
 @NgModule({
   imports: [CommonModule, FlexLayoutModule, MagAppRoutingModule],
@@ -29,7 +30,8 @@ import { ScrollSpyService } from "./scroll-spy.service";
     NavBarNavComponent,
     NavBarContentComponent,
     ContactComponent,
-    ScrollSpyDirective
+    ScrollSpyDirective,
+    ResumeWorkHistoryEntryComponent
   ],
   providers: [ScrollSpyService]
 })

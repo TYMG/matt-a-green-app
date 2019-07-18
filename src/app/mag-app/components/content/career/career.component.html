@@ -1,3 +1,13 @@
-<div id="about-me__main" class="full ">
-  <h1 id="about-me__career">Career</h1>
+<div id="about-me__main">
+  <div *ngFor="let jerb of jerbs">
+    <mag-resume-work-history-entry
+      [title]="jerb.title"
+      [dates]="jerb.dates"
+      [blurb]="jerb.blurb"
+      [company]="jerb.company"
+      [location]="jerb.location"
+      [tasks]="jerb.tasks"
+    >
+    </mag-resume-work-history-entry>
+  </div>
 </div>

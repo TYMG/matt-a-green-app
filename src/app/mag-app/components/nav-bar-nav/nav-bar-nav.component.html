@@ -1,24 +1,41 @@
 <div class="d-flex justify-content-center">
   <nav id="navbar-nav__main" class="navbar">
-    <nav id="navbar-nav" class="nav flex-column">
-      <a
-        class="nav-link stroke"
-        [class.active-link]="'about-me-section' === currentSelection"
-        href="#about-me__header"
-        >About Me</a
-      >
-      <a
-        class="nav-link stroke"
-        [class.active-link]="'career-section' === currentSelection"
-        href="#about-me__career"
-        >Career</a
-      >
-      <a
-        class="nav-link stroke"
-        [class.active-link]="'contact-section' === currentSelection"
-        href="#contact"
-        >Contact</a
-      >
+    <nav id="navbar-nav" class="nav">
+      <div fxLayout="column" fxLayoutAlgin="center" fxLayoutGap="16px">
+        <div>
+          <a
+            class="nav-link stroke"
+            [class.active-link]="'about-me-section' === currentSelection"
+            href="#about-me__header"
+            >About Me</a
+          >
+        </div>
+        <div>
+          <a
+            class="nav-link stroke"
+            [class.active-link]="'career-section' === currentSelection"
+            href="#about-me__career"
+            >Career</a
+          >
+        </div>
+
+        <div fxLayout fxLayoutGap="24px" fxLayoutAlign="center center">
+          <a href="https://github.com/TYMG">
+            <img
+              class="img-fluid image"
+              alt="github-icon"
+              src="assets/images/github-icon.png"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/mattalangreen/">
+            <img
+              class="img-fluid image"
+              alt="github-icon"
+              src="assets/images/linkedin-icon.png"
+            />
+          </a>
+        </div>
+      </div>
     </nav>
   </nav>
 </div>

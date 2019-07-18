@@ -1,14 +1,11 @@
 #app-content__main {
-  margin-left: 0;
-  margin-right: 0;
+  height: 100%;
 }
 
 #app-content__nav-bar {
-  background-color: darkgrey;
   width: 100%;
 }
 #app-content__scroll-content {
-  background-color: coral;
   width: 100%;
 }
 
@@ -17,14 +14,11 @@
 }
 
 #nav-bar__pic {
-  height: 30%;
 }
 
 #nav-bar__nameplate {
   height: 10%;
-  background-color: red;
 }
 
 #nav-bar__nav-list {
-  height: 60%;
 }
