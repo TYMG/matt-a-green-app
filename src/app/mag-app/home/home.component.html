@@ -1,17 +1,31 @@
-<div
-  id="home__main"
-  class="d-flex full align-items-center justify-content-center"
->
-  <div id="home__content-container" class="">
+<div id="home__main" class="d-flex  align-items-center justify-content-center">
+  <div id="home__content-container" class="p-4">
     <div fxLayout="column" class="align-self-center">
       <img
-        id="home__image"
-        class="rounded "
+        fxShow
+        fxHide.lt-sm="true"
+        class="rounded img-fluid home__image"
         alt="Me Running Thangs "
-        src="assets/images/Ocean-Rect.png"
+        src="assets/images/Ocean-Landscape.png"
       />
-      <div class="flex-fill">
-        <p id="home__text">Matt Green. Software Developer</p>
+      <img
+        fxShow
+        fxHide.gt-xs="true"
+        class="rounded img-fluid home__image"
+        alt="Me Running Thangs "
+        src="assets/images/Ocean-Protrait.png"
+      />
+
+      <div
+        fxLayout
+        fxLayoutAlign="center center"
+        fxLayoutGap="16px"
+        fxLayout.lt-md="column"
+        fxLayout
+        class="home__text"
+      >
+        <p>Matt Green.</p>
+        <p>Software Developer</p>
       </div>
     </div>
     <!--  <div id="home__image"></div> -->

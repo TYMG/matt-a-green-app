@@ -13,7 +13,7 @@ import {
 @Component({
   selector: "mag-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"],
+  styleUrls: ["./home.component.scss"],
   animations: [
     trigger("fadeInAnimation", [
       transition(":enter", [

@@ -2,15 +2,14 @@
 }
 
 #home__content-container {
-  width: 90%;
 }
 
-#home__image {
+.home__image {
   width: 100%;
   height: 85vh;
 }
 
-#home__text {
+.home__text {
   /* Matt Green. Software Developer. */
 
   font-family: Roboto;
@@ -23,4 +22,11 @@
   color: #0c0b0b;
 
   -webkit-text-stroke: 1px #e5e5e5;
+}
+
+/* Less than lt-md */
+@media only screen and (max-width: 959px) {
+  .home__image {
+    height: 80vh;
+  }
 }
