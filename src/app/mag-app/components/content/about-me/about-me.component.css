@@ -4,4 +4,9 @@ div {
 
 #about-me__header {
   text-align: center;
+  font-size: 5vh;
+}
+
+/* Less than lt-md */
+@media only screen and (max-width: 959px) {
 }

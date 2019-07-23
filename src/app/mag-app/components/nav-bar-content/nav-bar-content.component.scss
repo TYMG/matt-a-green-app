@@ -11,3 +11,10 @@
 #career-section {
   height: 95vh;
 }
+
+/* Less than lt-md */
+@media only screen and (max-width: 959px) {
+  #navbar__main {
+    overflow-y: inherit;
+  }
+}

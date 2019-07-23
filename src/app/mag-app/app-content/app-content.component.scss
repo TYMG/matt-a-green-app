@@ -1,5 +1,4 @@
 #app-content__main {
-  height: 100%;
 }
 
 #app-content__nav-bar {
@@ -21,4 +20,11 @@
 }
 
 #nav-bar__nav-list {
+}
+
+/* Less than lt-md */
+@media only screen and (min-width: 960px) {
+  #app-content__main {
+    height: 100vh;
+  }
 }
