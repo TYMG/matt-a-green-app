@@ -5,3 +5,13 @@ div {
 #about-me__header {
   text-align: center;
 }
+.text {
+  font-size: 5vh;
+}
+.text-sm {
+  font-size: 4vh;
+}
+
+/* Less than lt-md */
+@media only screen and (max-width: 959px) {
+}

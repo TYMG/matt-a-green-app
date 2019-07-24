@@ -1,7 +1,9 @@
-<div id="app-content__main" fxLayout>
+<div id="app-content__main" fxLayout fxLayout.lt-md="column">
   <div
     fxFlex="30%"
     fxLayout="column"
+    fxShow
+    fxHide.lt-md="true"
     id="app-content__nav-bar"
     class="col-3  p-4 align-items-center"
   >
@@ -12,6 +14,11 @@
   <mag-nav-bar-content
     fxFlex
     class="col p-4"
+    fxFlexOrder.lt-md="0"
     id="app-content__scroll-content"
   ></mag-nav-bar-content>
+  <mag-social-media-icons
+    fxHide.gt-sm="true"
+    fxOrder.gt-sm="99"
+  ></mag-social-media-icons>
 </div>
