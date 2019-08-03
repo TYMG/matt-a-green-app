@@ -7,9 +7,9 @@ APP_NAME: "mattagreen"
 BUILD_ENV: "prod"
 
 phases:
-  runtime-versions:
-    nodejs: 10
   install:
+    runtime-versions:
+      nodejs: 10
     commands:
       # Download and Install NodeJS 8.0
       - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
