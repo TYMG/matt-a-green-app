@@ -8,15 +8,18 @@
   height: inherit;
   background-color: burlywood;
 
-  &___details{
-    flex:1;
+  &___details {
+    flex: 1;
   }
 
-  &__picture{
-      flex: 0 0 30%;
-      background-color: green;
+  &__picture {
+    flex: 0 0 30%;
+    background-color: green;
+    padding: 5px;
+
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
   }
-
-
-
 }
