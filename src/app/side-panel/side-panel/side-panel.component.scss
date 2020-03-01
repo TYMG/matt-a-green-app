@@ -1,0 +1,22 @@
+@import "main";
+
+:host {
+  height: 100%;
+}
+
+.side-panel {
+  height: inherit;
+  background-color: burlywood;
+
+  &___details{
+    flex:1;
+  }
+
+  &__picture{
+      flex: 0 0 30%;
+      background-color: green;
+  }
+
+
+
+}
