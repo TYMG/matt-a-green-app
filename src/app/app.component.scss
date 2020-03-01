@@ -1,0 +1,26 @@
+@import "main";
+
+:host {
+    height: inherit;
+}
+
+#app_main{
+    background-color: black;
+}
+
+.app__main{
+    width: inherit;
+    height: inherit;
+    background-color: mediumaquamarine;
+
+    &-side-bar{
+        height: 100%;
+        flex:0 0 20%;
+        background-color: blue;
+    }
+
+    &-content{
+        flex: 1;
+        background-color: magenta;
+    }
+}
