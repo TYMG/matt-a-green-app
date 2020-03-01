@@ -8,10 +8,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { UnderTheHoodComponent } from './under-the-hood/under-the-hood.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    UnderTheHoodComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
