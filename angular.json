@@ -20,14 +20,19 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "src/assets/css/cyborg-bootstrap.min.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/tether/dist/js/tether.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            ],
+            "stylePreprocessorOptions": { 
+              "includePaths": [
+                "src/sass"
+              ]
+            }
           },
           "configurations": {
             "production": {
