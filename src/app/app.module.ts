@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { UnderTheHoodComponent } from './under-the-hood/under-the-hood.component';
 import { SidePanelModule } from './side-panel/side-panel.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    UnderTheHoodComponent
+    UnderTheHoodComponent,
+    NavbarComponent
   ],
   imports: [
     SidePanelModule,

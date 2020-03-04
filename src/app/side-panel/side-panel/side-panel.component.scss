@@ -3,6 +3,16 @@
 :host {
   height: 100%;
 }
+img.side-panel__picture {
+  width: 75%;
+  border-radius: 50%;
+  padding: 2rem;
+  margin: 0 auto;
+
+  @include respond(tab-land){
+    width: 100%;
+  }
+}
 
 .side-panel {
   height: inherit;
@@ -10,16 +20,13 @@
 
   &___details {
     flex: 1;
-  }
+    
+    &__name {
 
-  &__picture {
-    flex: 0 0 30%;
-    background-color: green;
-    padding: 5px;
+    }
 
-    img {
-      width: 100%;
-      border-radius: 50%;
+    &__social{
+        
     }
   }
 }

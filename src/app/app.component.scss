@@ -12,12 +12,12 @@
     width: inherit;
     height: inherit;
     background-color: mediumaquamarine;
-
-    &-side-panel{
-        height: 100%;
-        flex:0 0 20%;
-        background-color: blue;
-    }
+    display: flex;
+    flex-direction: column;
+   &-navbar{
+        flex: 0 0 5%;
+        background-color: pink;
+   }
 
     &-content{
         flex: 1;
