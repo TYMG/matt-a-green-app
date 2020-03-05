@@ -1,26 +1,29 @@
 @import "main";
 
 :host {
-    height: inherit;
+  height: inherit;
 }
 
-#app_main{
-    background-color: black;
+#app_main {
+  background-color: black;
 }
 
-.app__main{
-    width: inherit;
-    height: inherit;
-    background-color: mediumaquamarine;
-    display: flex;
-    flex-direction: column;
-   &-navbar{
-        flex: 0 0 5%;
-        background-color: pink;
-   }
+.app__main {
+  width: inherit;
+  height: inherit;
+  background-color: mediumaquamarine;
+  display: flex;
+  flex-direction: column;
+  &-navbar {
+    flex: 0 0 5%;
+    background-color: pink;
+  }
 
-    &-content{
-        flex: 1;
-        background-color: magenta;
-    }
+  &-content {
+    flex: 1;
+    background-color: lightblue;
+  }
+}
+.app__main-content ::ng-deep {
+  height: 100%;
 }

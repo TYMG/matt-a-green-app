@@ -1,0 +1,15 @@
+@import "main";
+
+
+
+.main {
+    height: 100%;
+    
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($grey, 0.8),
+        rgba($cobalt, 0.8)), url(Me_Waterfall.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
