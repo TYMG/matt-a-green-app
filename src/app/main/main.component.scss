@@ -16,27 +16,37 @@
   &-content {
     position: absolute;
     //background-color: rgba(175, 238, 238, 0.39);
-    height: 50%;
     width: 40%;
-    bottom: 15rem;
+    bottom: 10rem;
     left: 5rem;
     padding: 5rem;
   }
-
 }
 
-.content{
+.content {
+  &-name {
+    font-size: 6.4rem;
 
-    &-name {
-      font-size: 6.4rem;
-      
-      @include respond( big-desktop){
-          font-size: 12rem;
-      }
+    @include respond(big-desktop) {
+      font-size: 12rem;
     }
-    &-email {
-      //font-size: 1.4rem;
-      text-decoration: none;
-     color: whitesmoke;
-    }
+  }
+  &-email {
+    //font-size: 1.4rem;
+    text-decoration: none;
+    color: whitesmoke;
+  }
+}
+
+.social {
+    padding-top: 1rem;
+  a {
+    padding-right: 2rem;
+  }
+}
+
+.image {
+  height: auto;
+  width: 100%;
+  max-width: 5rem;
 }
