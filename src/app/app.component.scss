@@ -16,12 +16,10 @@
   flex-direction: column;
   &-navbar {
     flex: 0 0 5%;
-    background-color: pink;
   }
 
   &-content {
     flex: 1;
-    background-color: lightblue;
   }
 }
 .app__main-content ::ng-deep {
