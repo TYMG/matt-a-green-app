@@ -13,8 +13,6 @@ import { NavBarNameplateComponent } from "./components/nav-bar-nameplate/nav-bar
 import { NavBarNavComponent } from "./components/nav-bar-nav/nav-bar-nav.component";
 import { NavBarContentComponent } from "./components/nav-bar-content/nav-bar-content.component";
 import { ContactComponent } from "./components/content/contact/contact.component";
-import { ScrollSpyDirective } from "./scroll-spy.directive";
-import { ScrollSpyService } from "./scroll-spy.service";
 import { ResumeWorkHistoryEntryComponent } from './components/content/career/resume-work-history-entry/resume-work-history-entry.component';
 import { SocialMediaIconsComponent } from './components/social-media-icons/social-media-icons.component';
 
@@ -31,10 +29,8 @@ import { SocialMediaIconsComponent } from './components/social-media-icons/socia
     NavBarNavComponent,
     NavBarContentComponent,
     ContactComponent,
-    ScrollSpyDirective,
     ResumeWorkHistoryEntryComponent,
     SocialMediaIconsComponent
-  ],
-  providers: [ScrollSpyService]
+  ]
 })
 export class MagAppModule {}

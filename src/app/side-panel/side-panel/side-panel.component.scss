@@ -1,0 +1,32 @@
+@import "main";
+
+:host {
+  height: 100%;
+}
+img.side-panel__picture {
+  width: 75%;
+  border-radius: 50%;
+  padding: 2rem;
+  margin: 0 auto;
+
+  @include respond(tab-land){
+    width: 100%;
+  }
+}
+
+.side-panel {
+  height: inherit;
+  background-color: burlywood;
+
+  &___details {
+    flex: 1;
+    
+    &__name {
+
+    }
+
+    &__social{
+        
+    }
+  }
+}

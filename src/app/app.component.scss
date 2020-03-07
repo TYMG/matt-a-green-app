@@ -1,0 +1,27 @@
+@import "main";
+
+:host {
+  height: inherit;
+}
+
+#app_main {
+  background-color: black;
+}
+
+.app__main {
+  width: inherit;
+  height: inherit;
+  background-color: mediumaquamarine;
+  display: flex;
+  flex-direction: column;
+  &-navbar {
+    flex: 0 0 5%;
+  }
+
+  &-content {
+    flex: 1;
+  }
+}
+.app__main-content ::ng-deep {
+  height: 100%;
+}
