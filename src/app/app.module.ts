@@ -12,13 +12,15 @@ import { MainComponent } from './main/main.component';
 import { UnderTheHoodComponent } from './under-the-hood/under-the-hood.component';
 import { SidePanelModule } from './side-panel/side-panel.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     UnderTheHoodComponent,
-    NavbarComponent
+    NavbarComponent,
+    HowItWorksComponent
   ],
   imports: [
     SidePanelModule,

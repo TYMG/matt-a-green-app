@@ -1,0 +1,131 @@
+<div class="hiw">
+  <div class="hiw-container">
+    <h1>How It Works</h1>
+    <h2>Overview</h2>
+    My website is a Static Hosted Website on S3 built using Angular in a GitHub
+    Repo. To deploy this app in AWS the following services will be used: * Code
+    Pipeline * Code Build * S3 Bucket
+
+    <h2>AWS - S3</h2>
+    Alot of directions here are pulled from
+    https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html
+    <h3>Create S3 Bucket</h3>
+    To create your buckets for website hosting
+    <ol>
+      <li>
+        Sign in to the AWS Management Console and open the Amazon S3 console at
+        https://console.aws.amazon.com/s3/.
+      </li>
+      <li>
+        Create your root domain:
+        <ol type="a">
+          <li>Choose Create bucket. <i>ex: MyAppBucket</i></li>
+          <li>Enter the Bucket name (for example, example.com).</li>
+          <li>Choose the Region where you want to create the bucket.</li>
+          <li>
+            To accept the default settings and create the bucket, choose Create.
+          </li>
+        </ol>
+      </li>
+    </ol>
+
+    <h3>Configure S3 Bucket</h3>
+    <p>
+      To host a static website on Amazon S3, an Amazon S3 bucket has to be
+      configured for website hosting. To configure your bucket for website
+      hosting
+    </p>
+    <p>To configure your bucket for website hosting</p>
+    <ol>
+      <li>
+        On the Amazon S3 console, in the S3 buckets list, choose the created for
+        this project. <i>ex: MyAppBucket</i>
+      </li>
+      <li>
+        Choose Properties.
+      </li>
+      <li>
+        Choose Static website hosting.
+      </li>
+      <li>
+        Choose Use this bucket to host a website.
+      </li>
+      <li>
+        In the Index Document box, enter index.html Note If you don't enter the
+        name of your index page, the Save button won't become active, and you
+        won't be able to configure your bucket for static website hosting.
+      </li>
+    </ol>
+    <h2>
+      Github
+    </h2>
+    Before creating the Angular application, login and create a GitHub
+    repository
+    <h2>Angular</h2>
+    <p>
+      Navigate to the directory that will contain the project code and clone the
+      recently created GitHub Repo..
+    </p>
+    <p>
+      The application itself is a simple angular app that can be generated using
+      <b><code> ng g app MyApp</code></b
+      >.
+    </p>
+    <p>
+      Note: If the <span>command not found: ng</span> error is not found, run
+      the following command <b><code>npm install -g @angular/cli </code></b>
+    </p>
+    <p>
+      Once the app is created, add the buildspec.yml to the root of the folder
+      with the following code:
+    </p>
+
+    <div>&nbsp;</div>
+    <img class="buildspec" src="/assets/images/carbon.svg" alt="" />
+
+    <p>
+      Once the buildspec file has been added to the project, commit the file and
+      push it to the repository
+    </p>
+    <h2>AWS - CodePipeline</h2>
+    <p>To create a CodePipeline Pipeline</p>
+    <ol>
+      <li>
+        Sign in to the AWS Management Console and open the CodePipeline console
+        at https://console.aws.amazon.com/codesuite/codepipeline/pipelines
+      </li>
+      <li>
+        Create CodePipeline
+        <ol type="a">
+          <li>
+            Click Create Pipeline and fill out the Pipeline Name; Leave the
+            Service Role default selection
+          </li>
+          <li>For the Source Stage, select GitHub</li>
+          <li>
+            After Connecting to GitHub, pick the GitHub Repo created, and select
+            Master as the branch. Leave the default. Change detection options
+          </li>
+          <li>For the Build Stage, select the AWS CodeBuild as the Build Provider</li>
+          <li>Select a region. Note: The region selected should the same as the region the bucket exists</li>
+          <li>For the project name, click Create Project</li>
+        </ol>
+      </li>
+    </ol>
+    <h2>AWS - CodeBuild</h2>
+    <p>Note: There are two ways to access the CodeBuild Service. Either through the CodePipeline stage or through the Console: https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1 Additionally, the CodeBuild form displayed will differ, based on where the form is accessed from.
+    </p>
+    <ol>
+        <li>
+            Fill out Project Name and Description
+        </li>
+        <li>FOr the Environment Section, keep Environment Image default selection. For the Operating System, I made the following selections:
+            <ul>
+                <li>Operating System: Ubuntu</li>
+                <li>Runtime: Standard</li>
+                <li>Image: aws/codebuild/standard:3.0</li>
+            </ul>
+        </li>
+    </ol>
+  </div>
+</div>
