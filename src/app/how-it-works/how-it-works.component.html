@@ -1,367 +1,411 @@
 <div class="hiw">
   <div class="hiw-container">
     <h1>How It Works</h1>
-    <h2>Overview</h2>
-    My Website is a Static Hosted Website on S3 built using Angular in a GitHub
-    Repo.
-    <p>To deploy this app in AWS the following services will be used:</p>
-    <ul>
-      <li>Code Pipeline</li>
-      <li>Code Build</li>
-      <li>S3 Bucket</li>
-    </ul>
-    <p>
-      Below is the steps to build this simple App. Please note, a lot of the
-      direction have been aggregated from AWS Documentation. Check out the
-      sources I used below for more details
-    </p>
-    <h3>Sources:</h3>
-    <ul>
-      <li>
-        <a
-          href="https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html"
-          >Example: Setting Up a Static Website Using a Custom Domain Name
-          Registered with Route 53 [AWS Documentation]
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-simple-s3.html"
-          >Tutorial: Create a Simple Pipeline (S3 Bucket) [AWS Documentation]</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html"
-        >
-          Create a Build Project in CodeBuild [AWS Documentation]</a
-        >
-      </li>
-      <li><a href=""></a></li>
-      <li><a href=""></a></li>
-    </ul>
-    <h2>AWS - S3</h2>
-
-    <h3>Create S3 Bucket</h3>
-    To create your buckets for website hosting
-    <ol>
-      <li>
-        Sign in to the AWS Management Console and open the Amazon S3 console at
-        https://console.aws.amazon.com/s3/.
-      </li>
-      <li>
-        Name and Region: Under Bucket name, enter a name for your bucket.
-        <i>ex: MyAppBucket</i>. Under Region, enter select a region
-      </li>
-      <li>Properties: Leave default selections</li>
-      <li>
-        Set Permissions: Uncheck the <i>Block all public access</i>
-
-        <p>
-          What does Public mean? Everyone everyone access to one or more of the
-          following: List objects, Write objects, Read and write permissions.
-          While this is terrible, this will be fixed shortly.
-        </p>
-      </li>
-      <li>
-        Accept the selected settings and create the bucket, choose Create.
-      </li>
-    </ol>
-
-    <h3>Configure S3 Bucket</h3>
-    <h4>Enable Static Website Hosting</h4>
-    <p>
-      To host a static website on Amazon S3, an Amazon S3 bucket has to be
-      configured for website hosting. To configure your bucket for website
-      hosting
-    </p>
-    <p>To configure your bucket for website hosting</p>
-    <ol>
-      <li>
-        In the Amazon S3 console, in the S3 buckets list, choose the created for
-        this project. <i>ex: MyAppBucket</i>
-      </li>
-      <li>
-        Choose Properties.
-      </li>
-      <li>
-        Choose Static website hosting.
-      </li>
-      <li>
-        Choose Use this bucket to host a website.
-      </li>
-      <li>
-        In the Index Document box, enter index.html Note: If you don't enter the
-        name of your index page, the Save button won't become active, and you
-        won't be able to configure your bucket for static website hosting.
-      </li>
-    </ol>
-    <h4>Make the S3 Bucket Visable</h4>
-    <p>
-      While the bucket is has Static Wed Host Enabled, the site will not work
-      with making the Bucket Items Public
-    </p>
-    <p>
-      To do this, a bucket policy needs to be created for the Site bucket. To do
-      so:
-    </p>
-    <ol>
-      <li>
-        In the Amazon S3 console, in the S3 buckets list, choose the created for
-        this project. <i>ex: MyAppBucket</i>
-      </li>
-      <li>Click Permissions</li>
-      <li>Click Bucket Policy</li>
-      <li>
-        Inside the bucket policy, enter the following
-        <pre>
-        <code>
-            &#123; 
-                &quot;Version&quot;: &quot;2012-10-17&quot;,
-                &quot;Id&quot;: &quot;Policy1583883712535&quot;,
-                &quot;Statement&quot;: [
-                    &#123; 
-                        &quot;Sid&quot;: &quot;Stmt1583883678671&quot;,
-                        &quot;Effect&quot;: &quot;Allow&quot;,
-                        &quot;Principal&quot;: &#123; 
-                            &quot;AWS&quot;: &quot;*&quot;
-                        &#125; ,
-                        &quot;Action&quot;: &quot;s3:GetObject&quot;,
-                        &quot;Resource&quot;: &quot;arn:aws:s3:::s3-ng-app/*&quot;
-                    &#125; 
-                ]
-            &#125; 
-        </code>
-    </pre>
-      </li>
-
-      <li>
-        Click 'Save'. Note when the bucket policy is saved, a warning prompt is
-        displayed. This expected and not a security issue. Do to the concept of
-        "least-privilge", while the bucket items are readable, theyre are not
-        editable.
-      </li>
-    </ol>
-
-    <h2>
-      Github
-    </h2>
-    Before creating the Angular application, login and create a GitHub
-    repository I'm going to skip the details of this step, but when creating the
-    repository, it's important that the repository is not initiated with a
-    Readme file. If a Readme is created, it will cause conflicts with the
-    Angular CLI Show error picture
-
-    <h2>Angular</h2>
-    <p>
-      Navigate to the directory that will contain the project code and clone the
-      recently created GitHub Repo..
-    </p>
-    <p>
-      The application itself is a simple angular app that can be generated using
-    </p>
-
-    <pre><code> ng new s3-ng-app --directory &#123;name of directory&#125;  </code></pre>
-
-    Note: the purpose of the --directory flag is to avoid the angular CLI
-    creating a directory for the App.
-    <p>
-      Note: If the <span>command not found: ng</span> error is not found, run
-      the following command <b><code>npm install -g @angular/cli </code></b>
-    </p>
-    <p>
-      Once the app is created, add the buildspec.yml to the root of the folder
-      with the following code:
-    </p>
-    <pre><code>
-        version: 0.2
-
-        env:
-        variables:
-          S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
-      APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
-      BUILD_ENV: &quot;prod&quot;
-      
-      phases:
-        install:
-          runtime-versions:
-            nodejs: 10
-          commands:
-            # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or lower, confirm by running ng -v inside your project folder
-            - npm i -g @angular/cli@6.0.8
-            # Install node dependancies.
-            - npm i
-      
-        build:
-          commands:
-            # Builds Angular application. You can also build using custom environment here like mock or staging
-            - echo Build started on `date`
-            - ng build --$&#123;BUILD_ENV&#125;
-      
-        post_build:
-          commands:
-            # Clear S3 bucket.
-            - aws s3 rm s3://$&#123;S3_BUCKET&#125; --recursive
-            - echo S3 bucket is cleared.
-            # Copy dist folder to S3 bucket, As of Angular 6, builds are stored inside an app folder in distribution and not at the root of the dist folder
-            - aws s3 cp dist/$&#123;APP_NAME&#125;/* s3://$&#123;S3_BUCKET&#125; --recursive
-            - echo Build completed on `date`
-    </code></pre>
-
-    <p>
-      Once the buildspec file has been added to the project, commit the file and
-      push it to the repository
-    </p>
-
-    <h2>AWS - CodePipeline</h2>
-    <p>To create a CodePipeline Pipeline</p>
-    <ol>
-      <li>
-        Sign in to the AWS Management Console and open the CodePipeline console
-        at https://console.aws.amazon.com/codesuite/codepipeline/pipelines
-      </li>
-      <li>
-        Create CodePipeline
-        <ol type="a">
-          <li>
-            Click Create Pipeline and fill out the Pipeline Name; Leave the
-            Service Role default selection of New Service Role. Feel free to
-            change the Role Name, but makes sure the name can easily be
-            remembered. Leave the check box checked for allowing the pipeline to
-            create a service role. Click next.
-          </li>
-          <li>For the Source Stage, select GitHub</li>
-          <li>
-            AWS will need premission to access GitHub, Click the Connect to
-            Github button and authenticate access. After Connecting to GitHub,
-            pick the GitHub Repo created for this project, and select Master as
-            the branch. Leave the default change detection options. Click Next
-            Note: It's not neccessary to use the Master branch for the GitHub Hooks, any branch can be used.
-          </li>
-          <li>
-            For the Build Stage, select the AWS CodeBuild as the Build Provider
-          </li>
-          <li>
-            Select a region. Note: The region selected should the same as the
-            region the bucket exists
-          </li>
-          <li>For the project name, click Create Project</li>
-        </ol>
-      </li>
-    </ol>
-    <h2>AWS - CodeBuild</h2>
-    <p>
-      Note: There are two ways to access the CodeBuild Service. Either through
-      the CodePipeline stage or through the Console:
-      https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1
-      Additionally, the CodeBuild form displayed will differ, based on where the
-      form is accessed from.
-    </p>
-    <ol>
-      <li>
-        Fill out Project Name and Description
-      </li>
-      <li>
-        FOr the Environment Section, keep Environment Image default selection.
-        For the Operating System, I made the following selections:
+    <div class="overview hiw-section">
+        <h2>Overview</h2>
+        My Website is a Static Hosted Website on S3 built using Angular in a GitHub
+        Repo.
+        <p>To deploy this app in AWS the following services will be used:</p>
         <ul>
-          <li>Operating System: Ubuntu</li>
-          <li>Runtime: Standard</li>
-          <li>Image: aws/codebuild/standard:3.0</li>
+          <li>Code Pipeline</li>
+          <li>Code Build</li>
+          <li>S3 Bucket</li>
         </ul>
-      </li>
-      <li>
-        For Service Role, keep the default selection, New service role. Remember
-        the name of the Service Role created for the CodeBuild, it will be
-        needed for a later section.
-      </li>
-      <li>
-        For Buildspec Section, keep the default selection, unless the
-        application's buildspec name is different than 'buildspec.yaml'
-      </li>
-      <li>
-        Leave the rest of the default selections and Click 'Continue to
-        CodePipeline'
-      </li>
-    </ol>
+        <p>
+          Below is the steps to build this simple App. Please note, a lot of the
+          direction have been aggregated from AWS Documentation. Check out the
+          sources I used below for more details
+        </p>
+        <h3>Sources:</h3>
+        <ul>
+          <li>
+            <a
+              href="https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html"
+              >Example: Setting Up a Static Website Using a Custom Domain Name
+              Registered with Route 53 [AWS Documentation]
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-simple-s3.html"
+              >Tutorial: Create a Simple Pipeline (S3 Bucket) [AWS Documentation]</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html"
+            >
+              Create a Build Project in CodeBuild [AWS Documentation]</a
+            >
+          </li>
+          <li><a href="https://ieg.wnet.org/2015/10/setting-up-an-aws-s3-bucket-for-read-only-web-access/">Setting Up An AWS S3 Bucket For Read-Only Web Access</a></li>
+        </ul>
+    </div>
+    <div class="aws-s3 hiw-section">
+        <h2>AWS - S3</h2>
+        <div class="create-s3 sub-section">
+            <h3>Create S3 Bucket</h3>
+            <p>
+                To create your buckets for website hosting:
+            </p>
+            <ol>
+              <li>
+                Sign in to the AWS Management Console and open the Amazon S3 console at
+                https://console.aws.amazon.com/s3/.
+              </li>
+              <li>
+                Name and Region: Under Bucket name, enter a name for your bucket.
+                <i>ex: MyAppBucket</i>. Under Region, enter select a region
+              </li>
+              <li>Properties: Leave default selections</li>
+              <li>
+                Set Permissions: Uncheck the <i>Block all public access</i>
+        
+                <p>
+                  What does Public mean? Everyone everyone access to one or more of the
+                  following: List objects, Write objects, Read and write permissions.
+                  While this is terrible, this will be fixed shortly.
+                </p>
+              </li>
+              <li>
+                Accept the selected settings and create the bucket, choose Create.
+              </li>
+            </ol>
+        </div>
+    
+        <div class="configure-s3 sub-section">
+            <h3>Configure S3 Bucket</h3>
+            <div class="padding-v-1">
+                <h4>Enable Static Website Hosting</h4>
+                <p>
+                  To host a static website on Amazon S3, an Amazon S3 bucket has to be
+                  configured for website hosting. To configure your bucket for website
+                  hosting. To configure your bucket for website hosting:</p>
+                <ol>
+                  <li>
+                    In the Amazon S3 console, in the S3 buckets list, choose the created for
+                    this project. <i>ex: MyAppBucket</i>
+                  </li>
+                  <li>
+                    Choose Properties.
+                  </li>
+                  <li>
+                    Choose Static website hosting.
+                  </li>
+                  <li>
+                    Choose Use this bucket to host a website.
+                  </li>
+                  <li>
+                    In the Index Document box, enter index.html Note: If you don't enter the
+                    name of your index page, the Save button won't become active, and you
+                    won't be able to configure your bucket for static website hosting.
+                  </li>
+                </ol>
+            </div>
+            <div class="padding-v-1">
+                <h4>Make the S3 Bucket Visable</h4>
+                <p>
+                  While the bucket is has Static Wed Host Enabled, the site will not work
+                  with making the Bucket Items Public. To do this, a bucket policy needs to be created for the Site bucket. To create:
+                </p>
+                <ol>
+                  <li>
+                    In the Amazon S3 console, in the S3 buckets list, choose the created for
+                    this project. <i>ex: MyAppBucket</i>
+                  </li>
+                  <li>Click Permissions</li>
+                  <li>Click Bucket Policy</li>
+                  <li>
+                    Inside the bucket policy, enter the following
+                    <pre>
+                    <code>
+                        &#123; 
+                            &quot;Version&quot;: &quot;2012-10-17&quot;,
+                            &quot;Id&quot;: &quot;Policy1583883712535&quot;,
+                            &quot;Statement&quot;: [
+                                &#123; 
+                                    &quot;Sid&quot;: &quot;Stmt1583883678671&quot;,
+                                    &quot;Effect&quot;: &quot;Allow&quot;,
+                                    &quot;Principal&quot;: &#123; 
+                                        &quot;AWS&quot;: &quot;*&quot;
+                                    &#125; ,
+                                    &quot;Action&quot;: &quot;s3:GetObject&quot;,
+                                    &quot;Resource&quot;: &quot;arn:aws:s3:::s3-ng-app/*&quot;
+                                &#125; 
+                            ]
+                        &#125; 
+                    </code>
+                </pre>
+                  </li>
+            
+                  <li>
+                    Click 'Save'. Note when the bucket policy is saved, a warning prompt is
+                    displayed. This expected and not a security issue. Do to the concept of
+                    "least-privilge", while the bucket items are readable, theyre are not
+                    editable.
+                  </li>
+                </ol>
+            </div>
+        </div>
+    </div>
 
-    <h2>AWS - CodePipeline (Cont.)</h2>
-    To wrap up the CodePipeline creation process,
-    <ol>
-      <li>After creating the CodeBuild project, click Next</li>
-      <li>
-        The pipeline will not need a Deploy Stage, so click 'Skip deploy stage'
-      </li>
-      <li>On the CodePipeline review page, click 'Create Pipeline'</li>
-    </ol>
+    <div class="github hiw-section">
+        <h2>
+          Create Github Repo
+        </h2>
+        <div class="sub-section">
+            <p>
+                Before creating the Angular application, login and create a GitHub
+                repository I'm going to skip the details of this step, but when creating the
+                repository, it's important that the repository is not initiated with a
+                Readme file. If a Readme is created, it will cause conflicts with the
+                Angular CLI Show error picture
+            </p>
+        </div>
+    </div>
 
-    <h2>AWS - S3 Bucket Permision</h2>
-    The last important step is to update the newly created S3 Bucket with
-    additional permissions for the CodeBuild IAM Role
-    <ol>
-      <li>
-        Locate the IAM Role created the CodeBuild Project. If you didnt save it,
-        head to IAM Console
-        https://console.aws.amazon.com/iam/home?region=us-east-1#/home
-      </li>
-      <li>On left side nav, click Roles</li>
-      <li>
-        On the Roles page, search for CodeBuild Role, the default naming
-        convention should be: <pre>
-            <code>
-                code&#45;&#123;name of code pipeline project&#125;&#45;cb&#45;service&#45;role
-            </code>
-        </pre>
-      </li>
-      <li>
-          Click the link of the Service Role and copy the Role ARN
-      </li>
-      <li>Navigate back to the S3 bucket created, click Permissions, then click Bucket Policy</li>
-      <li>Add the following to the bucket policy 
-
+    <div class="angular hiw-section">
+        <h2>Generate Angular Application</h2>
+        <div class="sub-section">
+            <p>
+              Navigate to the directory that will contain the project code and clone the
+              recently created GitHub Repo.
+            </p>
+            <p>
+              The application itself is a simple angular app that can be generated using
+            </p>
+        
+            <pre><code> ng new s3-ng-app --directory &#123;name of directory&#125;  </code></pre>
+        
+            <p>
+                Note: the purpose of the --directory flag is to avoid the angular CLI
+                creating a directory for the App.
+            </p>
+            <p>
+              Note: If the <span>command not found: ng</span> error is not found, run
+              the following command <b><code>npm install -g @angular/cli </code></b>
+            </p>
+            <p>
+              Once the app is created, add the buildspec.yml to the root of the folder
+              with the following code:
+            </p>
+        </div>
         <pre><code>
-            &#123;
-                &quot;Sid&quot;: &quot;Stmt1565052307205&quot;,
-                &quot;Effect&quot;: &quot;Allow&quot;,
-                &quot;Principal&quot;: &#123;
-                    &quot;AWS&quot;: &quot;arn:aws:iam::170172180887:role/service-role/codebuild-s3-ng-app-cb-service-role&quot;
-                &#125;,
-                &quot;Action&quot;: [
-                    &quot;s3:DeleteObject&quot;,
-                    &quot;s3:GetObject&quot;,
-                    &quot;s3:PutObject&quot;
-                ],
-                &quot;Resource&quot;: &quot;arn:aws:s3:::mattagreen.com/*&quot;
-            &#125;
+            version: 0.2
+    
+            env:
+            variables:
+              S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
+          APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
+          BUILD_ENV: &quot;prod&quot;
+          
+          phases:
+            install:
+              runtime-versions:
+                nodejs: 10
+              commands:
+                # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or lower, confirm by running ng -v inside your project folder
+                - npm i -g @angular/cli@6.0.8
+                # Install node dependancies.
+                - npm i
+          
+            build:
+              commands:
+                # Builds Angular application. You can also build using custom environment here like mock or staging
+                - echo Build started on `date`
+                - ng build --$&#123;BUILD_ENV&#125;
+          
+            post_build:
+              commands:
+                # Clear S3 bucket.
+                - aws s3 rm s3://$&#123;S3_BUCKET&#125; --recursive
+                - echo S3 bucket is cleared.
+                # Copy dist folder to S3 bucket, As of Angular 6, builds are stored inside an app folder in distribution and not at the root of the dist folder
+                - aws s3 cp dist/$&#123;APP_NAME&#125;/* s3://$&#123;S3_BUCKET&#125; --recursive
+                - echo Build completed on `date`
         </code></pre>
-      </li>
-      <li>Click Save</li>
-    </ol>
-    <h2>
-      Workflow
-    </h2>
-    <p>Now that the project is setup and configured, it's time to test. Below is the project workflow</p>
-    <ol>
-      <li>GitHub - A change is made to the Master Branch</li>
-      <li>CodePipeline - Source Step picks up change using GitHub Hooks</li>
-      <li>CodePipeline - Build Step Calls CodeBuild MattAGreen-CB</li>
-      <li>CodeBuild - Using buildspec.yaml file, builds code</li>
-      <li>
-        CodeBuild - Using buildspec.yaml file, Copy dist folder to S3 bucket,
-      </li>
-    </ol>
-    <p>And that's it!</p>
-    <h2>
-        Testing
-    </h2>
-    <p>Testing this workflow is simple</p>
-    <ol>
-        <li>Make a change to a file in the Master branch, or whatever branch chosen for the GitHub hooks.</li>
-        <li>Navigate to the CodePipeline to track the progress of the build.</li>
-        <li>Once the build completes, navigate to the S3 Bucket created for this project.</li>
-        <li>The contents of the Angular Project create should be in the bucket. If not, there was an issue with build.</li>
-        <li>Click Properties, then click Static website hosting</li>
-        <li>In the Static website hosting, click the endpoint link and you should be taken your very S3 Bucket Hosted Angular App!!!</li>
-    </ol>
+    
+        <p>
+          Once the buildspec file has been added to the project, commit the file and
+          push it to the repository
+        </p>
+    </div>
+
+    <div class="codepipeline hiw-section">
+        <h2>AWS - CodePipeline</h2>
+        <p>To create a CodePipeline Pipeline</p>
+        <ol>
+          <li>
+            Sign in to the AWS Management Console and open the CodePipeline console
+            at https://console.aws.amazon.com/codesuite/codepipeline/pipelines
+          </li>
+          <li>
+            Create CodePipeline
+            <ol type="a">
+              <li>
+                Click Create Pipeline and fill out the Pipeline Name; Leave the
+                Service Role default selection of New Service Role. Feel free to
+                change the Role Name, but makes sure the name can easily be
+                remembered. Leave the check box checked for allowing the pipeline to
+                create a service role. Click next.
+              </li>
+              <li>For the Source Stage, select GitHub</li>
+              <li>
+                AWS will need premission to access GitHub, Click the Connect to
+                Github button and authenticate access. After Connecting to GitHub,
+                pick the GitHub Repo created for this project, and select Master as
+                the branch. Leave the default change detection options. Click Next
+                Note: It's not neccessary to use the Master branch for the GitHub Hooks, any branch can be used.
+              </li>
+              <li>
+                For the Build Stage, select the AWS CodeBuild as the Build Provider
+              </li>
+              <li>
+                Select a region. Note: The region selected should the same as the
+                region the bucket exists
+              </li>
+              <li>For the project name, click Create Project</li>
+            </ol>
+          </li>
+        </ol>
+    </div>
+    <div class="codebuild hiw-section">
+        <h2>AWS - CodeBuild</h2>
+        <div class="sub-section">
+            <p>
+              Note: There are two ways to access the CodeBuild Service. Either through
+              the CodePipeline stage or through the Console:
+              https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1
+              Additionally, the CodeBuild form displayed will differ, based on where the
+              form is accessed from.
+            </p>
+        </div>
+        <ol>
+          <li>
+            Fill out Project Name and Description
+          </li>
+          <li>
+            For the Environment Section, keep Environment Image default selection.
+            For the Operating System, I made the following selections:
+            <ul>
+              <li>Operating System: Ubuntu</li>
+              <li>Runtime: Standard</li>
+              <li>Image: aws/codebuild/standard:3.0</li>
+            </ul>
+          </li>
+          <li>
+            For Service Role, keep the default selection, New service role. Remember
+            the name of the Service Role created for the CodeBuild, it will be
+            needed for a later section.
+          </li>
+          <li>
+            For Buildspec Section, keep the default selection, unless the
+            application's buildspec name is different than 'buildspec.yaml'
+          </li>
+          <li>
+            Leave the rest of the default selections and Click 'Continue to
+            CodePipeline'
+          </li>
+        </ol>
+    </div>
+
+    <div class="codepipeline-2 hiw-section">
+        <h2>AWS - CodePipeline (Cont.)</h2>
+        <div class="sub-section">
+            <p>
+                To wrap up the CodePipeline creation process,
+            </p>
+        </div>
+        <ol>
+          <li>After creating the CodeBuild project, click Next</li>
+          <li>
+            The pipeline will not need a Deploy Stage, so click 'Skip deploy stage'
+          </li>
+          <li>On the CodePipeline review page, click 'Create Pipeline'</li>
+        </ol>
+    </div>
+
+    <div class="s3-bucket-perm hiw-section">
+        <h2>AWS - S3 Bucket Permision</h2>
+        <div class="sub-section">
+            <p>
+                The last important step is to update the newly created S3 Bucket with
+                additional permissions for the CodeBuild IAM Role
+            </p>
+        </div>
+        <ol>
+          <li>
+            Locate the IAM Role created the CodeBuild Project. If you didnt save it,
+            head to IAM Console
+            https://console.aws.amazon.com/iam/home?region=us-east-1#/home
+          </li>
+          <li>On left side nav, click Roles</li>
+          <li>
+            On the Roles page, search for CodeBuild Role, the default naming
+            convention should be: <pre>
+                <code>
+                    code&#45;&#123;name of code pipeline project&#125;&#45;cb&#45;service&#45;role
+                </code>
+            </pre>
+          </li>
+          <li>
+              Click the link of the Service Role and copy the Role ARN
+          </li>
+          <li>Navigate back to the S3 bucket created, click Permissions, then click Bucket Policy</li>
+          <li>Add the following to the bucket policy 
+    
+            <pre><code>
+                &#123;
+                    &quot;Sid&quot;: &quot;Stmt1565052307205&quot;,
+                    &quot;Effect&quot;: &quot;Allow&quot;,
+                    &quot;Principal&quot;: &#123;
+                        &quot;AWS&quot;: &quot;arn:aws:iam::170172180887:role/service-role/codebuild-s3-ng-app-cb-service-role&quot;
+                    &#125;,
+                    &quot;Action&quot;: [
+                        &quot;s3:DeleteObject&quot;,
+                        &quot;s3:GetObject&quot;,
+                        &quot;s3:PutObject&quot;
+                    ],
+                    &quot;Resource&quot;: &quot;arn:aws:s3:::mattagreen.com/*&quot;
+                &#125;
+            </code></pre>
+          </li>
+          <li>Click Save</li>
+        </ol>
+    </div>
+    <div class="workflow hiw-section">
+        <h2>
+          Workflow
+        </h2>
+        <div class="sub-section">
+            <p>Now that the project is setup and configured, it's time to test. Below is the project workflow</p>
+        </div>
+        <ol>
+          <li>GitHub - A change is made to the Master Branch</li>
+          <li>CodePipeline - Source Step picks up change using GitHub Hooks</li>
+          <li>CodePipeline - Build Step Calls CodeBuild MattAGreen-CB</li>
+          <li>CodeBuild - Using buildspec.yaml file, builds code</li>
+          <li>
+            CodeBuild - Using buildspec.yaml file, Copy dist folder to S3 bucket,
+          </li>
+        </ol>
+        <p>And that's it!</p>
+    </div>
+    <div class="testing hiw-section">
+        <h2>
+            Testing
+        </h2>
+        <div class="sub-section">
+            <p>Testing this workflow is simple</p>
+        </div>
+        <ol>
+            <li>Make a change to a file in the Master branch, or whatever branch chosen for the GitHub hooks.</li>
+            <li>Navigate to the CodePipeline to track the progress of the build.</li>
+            <li>Once the build completes, navigate to the S3 Bucket created for this project.</li>
+            <li>The contents of the Angular Project create should be in the bucket. If not, there was an issue with build.</li>
+            <li>Click Properties, then click Static website hosting</li>
+            <li>In the Static website hosting, click the endpoint link and you should be taken your very S3 Bucket Hosted Angular App!!!</li>
+        </ol>
+    </div>
   </div>
 </div>
