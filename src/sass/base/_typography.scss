@@ -7,3 +7,14 @@ code {
     color: $moss;
 }
 
+*::selection {
+    background-color: $moss;
+}
+code::selection{
+    background-color: rgba($grey, 1),;
+}
+
+//Styles the first letter of the p tag
+p::first-letter {
+
+}

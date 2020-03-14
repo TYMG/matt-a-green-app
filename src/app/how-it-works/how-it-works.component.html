@@ -147,11 +147,10 @@
       Github
     </h2>
     Before creating the Angular application, login and create a GitHub
-    repository
-    I'm going to skip the details of this step, but when creating the repository, it's important that the repository is not initiated with a Readme file. If a Readme is created, it will cause conflicts with the Angular CLI
-
-    Show error picture
-
+    repository I'm going to skip the details of this step, but when creating the
+    repository, it's important that the repository is not initiated with a
+    Readme file. If a Readme is created, it will cause conflicts with the
+    Angular CLI Show error picture
 
     <h2>Angular</h2>
     <p>
@@ -160,10 +159,12 @@
     </p>
     <p>
       The application itself is a simple angular app that can be generated using
-    
-      <pre><code> ng new s3-ng-app --directory &#123;name of directory&#125;  </code></pre>
+    </p>
 
-      Note: the purpose of the --directory flag is to avoid the angular CLI creating a directory for the App. 
+    <pre><code> ng new s3-ng-app --directory &#123;name of directory&#125;  </code></pre>
+
+    Note: the purpose of the --directory flag is to avoid the angular CLI
+    creating a directory for the App.
     <p>
       Note: If the <span>command not found: ng</span> error is not found, run
       the following command <b><code>npm install -g @angular/cli </code></b>
@@ -171,14 +172,13 @@
     <p>
       Once the app is created, add the buildspec.yml to the root of the folder
       with the following code:
-
     </p>
     <pre><code>
         version: 0.2
 
         env:
         variables:
-          S3_BUCKET: MyAppBucket //Should be the name of S3 bucket created
+          S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
       APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
       BUILD_ENV: &quot;prod&quot;
       
@@ -204,7 +204,7 @@
             - aws s3 rm s3://$&#123;S3_BUCKET&#125; --recursive
             - echo S3 bucket is cleared.
             # Copy dist folder to S3 bucket, As of Angular 6, builds are stored inside an app folder in distribution and not at the root of the dist folder
-            - aws s3 cp dist/browser/ s3://$&#123;S3_BUCKET&#125; --recursive
+            - aws s3 cp dist/$&#123;APP_NAME&#125;/* s3://$&#123;S3_BUCKET&#125; --recursive
             - echo Build completed on `date`
     </code></pre>
 
@@ -212,7 +212,7 @@
       Once the buildspec file has been added to the project, commit the file and
       push it to the repository
     </p>
-    
+
     <h2>AWS - CodePipeline</h2>
     <p>To create a CodePipeline Pipeline</p>
     <ol>
@@ -225,12 +225,18 @@
         <ol type="a">
           <li>
             Click Create Pipeline and fill out the Pipeline Name; Leave the
-            Service Role default selection
+            Service Role default selection of New Service Role. Feel free to
+            change the Role Name, but makes sure the name can easily be
+            remembered. Leave the check box checked for allowing the pipeline to
+            create a service role. Click next.
           </li>
           <li>For the Source Stage, select GitHub</li>
           <li>
-            After Connecting to GitHub, pick the GitHub Repo created, and select
-            Master as the branch. Leave the default. Change detection options
+            AWS will need premission to access GitHub, Click the Connect to
+            Github button and authenticate access. After Connecting to GitHub,
+            pick the GitHub Repo created for this project, and select Master as
+            the branch. Leave the default change detection options. Click Next
+            Note: It's not neccessary to use the Master branch for the GitHub Hooks, any branch can be used.
           </li>
           <li>
             For the Build Stage, select the AWS CodeBuild as the Build Provider
@@ -265,7 +271,9 @@
         </ul>
       </li>
       <li>
-        For Service Role, keep the default selection
+        For Service Role, keep the default selection, New service role. Remember
+        the name of the Service Role created for the CodeBuild, it will be
+        needed for a later section.
       </li>
       <li>
         For Buildspec Section, keep the default selection, unless the
@@ -274,11 +282,6 @@
       <li>
         Leave the rest of the default selections and Click 'Continue to
         CodePipeline'
-      </li>
-      <li>
-        <h1>
-          Updating Bucket With Addition Permissions for the CodeBuild Iam Role
-        </h1>
       </li>
     </ol>
 
@@ -291,9 +294,53 @@
       </li>
       <li>On the CodePipeline review page, click 'Create Pipeline'</li>
     </ol>
+
+    <h2>AWS - S3 Bucket Permision</h2>
+    The last important step is to update the newly created S3 Bucket with
+    additional permissions for the CodeBuild IAM Role
+    <ol>
+      <li>
+        Locate the IAM Role created the CodeBuild Project. If you didnt save it,
+        head to IAM Console
+        https://console.aws.amazon.com/iam/home?region=us-east-1#/home
+      </li>
+      <li>On left side nav, click Roles</li>
+      <li>
+        On the Roles page, search for CodeBuild Role, the default naming
+        convention should be: <pre>
+            <code>
+                code&#45;&#123;name of code pipeline project&#125;&#45;cb&#45;service&#45;role
+            </code>
+        </pre>
+      </li>
+      <li>
+          Click the link of the Service Role and copy the Role ARN
+      </li>
+      <li>Navigate back to the S3 bucket created, click Permissions, then click Bucket Policy</li>
+      <li>Add the following to the bucket policy 
+
+        <pre><code>
+            &#123;
+                &quot;Sid&quot;: &quot;Stmt1565052307205&quot;,
+                &quot;Effect&quot;: &quot;Allow&quot;,
+                &quot;Principal&quot;: &#123;
+                    &quot;AWS&quot;: &quot;arn:aws:iam::170172180887:role/service-role/codebuild-s3-ng-app-cb-service-role&quot;
+                &#125;,
+                &quot;Action&quot;: [
+                    &quot;s3:DeleteObject&quot;,
+                    &quot;s3:GetObject&quot;,
+                    &quot;s3:PutObject&quot;
+                ],
+                &quot;Resource&quot;: &quot;arn:aws:s3:::mattagreen.com/*&quot;
+            &#125;
+        </code></pre>
+      </li>
+      <li>Click Save</li>
+    </ol>
     <h2>
       Workflow
     </h2>
+    <p>Now that the project is setup and configured, it's time to test. Below is the project workflow</p>
     <ol>
       <li>GitHub - A change is made to the Master Branch</li>
       <li>CodePipeline - Source Step picks up change using GitHub Hooks</li>
@@ -302,6 +349,19 @@
       <li>
         CodeBuild - Using buildspec.yaml file, Copy dist folder to S3 bucket,
       </li>
+    </ol>
+    <p>And that's it!</p>
+    <h2>
+        Testing
+    </h2>
+    <p>Testing this workflow is simple</p>
+    <ol>
+        <li>Make a change to a file in the Master branch, or whatever branch chosen for the GitHub hooks.</li>
+        <li>Navigate to the CodePipeline to track the progress of the build.</li>
+        <li>Once the build completes, navigate to the S3 Bucket created for this project.</li>
+        <li>The contents of the Angular Project create should be in the bucket. If not, there was an issue with build.</li>
+        <li>Click Properties, then click Static website hosting</li>
+        <li>In the Static website hosting, click the endpoint link and you should be taken your very S3 Bucket Hosted Angular App!!!</li>
     </ol>
   </div>
 </div>
