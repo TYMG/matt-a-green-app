@@ -2,20 +2,23 @@
   <div class="hiw-container">
     <h1>How It Works</h1>
     <div class="overview hiw-section">
-        <h2>Overview</h2>
-        My Website is a Static Hosted Website on S3 built using Angular in a GitHub
-        Repo.
-        <p>To deploy this app in AWS the following services will be used:</p>
-        <ul>
-          <li>Code Pipeline</li>
-          <li>Code Build</li>
-          <li>S3 Bucket</li>
-        </ul>
+        <div class="sub-section">
+          <h2>Overview</h2>
+          My Website is a Static Hosted Website on S3 built using Angular in a GitHub
+          Repo.
+          <p>To deploy this app in AWS the following services will be used:</p>
+          <ul>
+            <li>Code Pipeline</li>
+            <li>Code Build</li>
+            <li>S3 Bucket</li>
+          </ul>
+
         <p>
           Below is the steps to build this simple App. Please note, a lot of the
           direction have been aggregated from AWS Documentation. Check out the
           sources I used below for more details
         </p>
+      </div>
         <h3>Sources:</h3>
         <ul class="moss-links">
           <li>
@@ -428,6 +431,7 @@
         </ol>
         <img class="img-fluid image" src="assets/images/demo/Successful S3 Site Launch Page.png" alt="Succesful S3 Bucket">
     </div>
+    <p class="text-align-center final-comments"> Have comments, questions, kudos? Shoot me an <a class="content-email" href="mailto:someone@yoursite.com">email</a> with [S3 Site] in the subject. Until then, Happy Coding!!!</p>
     <h2 class="text-align-center"><a [routerLink]="['']">Back</a></h2>
   </div>
 </div>
