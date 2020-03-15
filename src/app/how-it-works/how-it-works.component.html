@@ -190,40 +190,44 @@
               with the following code:
             </p>
         </div>
-        <pre><code>
-            version: 0.2
-    
-            env:
-            variables:
-              S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
-          APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
-          BUILD_ENV: &quot;prod&quot;
-          
-          phases:
-            install:
-              runtime-versions:
-                nodejs: 10
-              commands:
-                # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or lower, confirm by running ng -v inside your project folder
-                - npm i -g @angular/cli@6.0.8
-                # Install node dependancies.
-                - npm i
-          
-            build:
-              commands:
-                # Builds Angular application. You can also build using custom environment here like mock or staging
-                - echo Build started on `date`
-                - ng build --$&#123;BUILD_ENV&#125;
-          
-            post_build:
-              commands:
-                # Clear S3 bucket.
-                - aws s3 rm s3://$&#123;S3_BUCKET&#125; --recursive
-                - echo S3 bucket is cleared.
-                # Copy dist folder to S3 bucket, As of Angular 6, builds are stored inside an app folder in distribution and not at the root of the dist folder
-                - aws s3 cp dist/$&#123;APP_NAME&#125;/* s3://$&#123;S3_BUCKET&#125; --recursive
-                - echo Build completed on `date`
-        </code></pre>
+        <div class="buildspec">
+            <pre ><code>
+                version: 0.2
+        
+                env:
+                variables:
+                  S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
+              APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
+              BUILD_ENV: &quot;prod&quot;
+              
+              phases:
+                install:
+                  runtime-versions:
+                    nodejs: 10
+                  commands:
+                    # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or 
+                    lower, confirm by running ng -v inside your project folder
+                    - npm i -g @angular/cli@6.0.8
+                    # Install node dependancies.
+                    - npm i
+              
+                build:
+                  commands:
+                    # Builds Angular application. You can also build using custom environment here like mock or staging
+                    - echo Build started on `date`
+                    - ng build --$&#123;BUILD_ENV&#125;
+              
+                post_build:
+                  commands:
+                    # Clear S3 bucket.
+                    - aws s3 rm s3://$&#123;S3_BUCKET&#125; --recursive
+                    - echo S3 bucket is cleared.
+                    # Copy dist folder to S3 bucket, As of Angular 6, builds are stored inside an app 
+                    folder in distribution and not at the root of the dist folder
+                    - aws s3 cp dist/$&#123;APP_NAME&#125;/* s3://$&#123;S3_BUCKET&#125; --recursive
+                    - echo Build completed on `date`
+            </code></pre>
+        </div>
     
         <p>
           Once the buildspec file has been added to the project, commit the file and
