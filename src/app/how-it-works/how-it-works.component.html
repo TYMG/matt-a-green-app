@@ -56,11 +56,12 @@
               <li>
                 Name and Region: Under Bucket name, enter a name for your bucket.
                 <i>ex: MyAppBucket</i>. Under Region, enter select a region
-              </li>
-              <li>Properties: Leave default selections</li>
-              <li>
+            </li>
+            <li>Properties: Leave default selections</li>
+            <li>
                 Set Permissions: Uncheck the <i>Block all public access</i>
-        
+                
+                <img src="assets/images/demo/S3 Public Ac.png" alt="" class="img-fluid image">
                 <p>
                   What does Public mean? Everyone everyone access to one or more of the
                   following: List objects, Write objects, Read and write permissions.
@@ -93,14 +94,18 @@
                     Choose Static website hosting.
                   </li>
                   <li>
-                    Choose Use this bucket to host a website.
+                      Choose Use this bucket to host a website.
+                      <img src="assets/images/demo/Static Website Hosting Small.jpg" alt="" class="img-fluid image">
+
                   </li>
                   <li>
                     In the Index Document box, enter index.html Note: If you don't enter the
                     name of your index page, the Save button won't become active, and you
                     won't be able to configure your bucket for static website hosting.
+                    <img src="assets/images/demo/Static Hosting Form.png" alt="" class="img-fluid image">
                   </li>
                 </ol>
+
             </div>
             <div class="padding-v-1">
                 <h4>Make the S3 Bucket Visable</h4>
@@ -145,6 +150,7 @@
                     editable.
                   </li>
                 </ol>
+                <img src="assets/images/demo/Public Access Warning.png" alt="" class="img-fluid image">
             </div>
         </div>
     </div>
@@ -161,6 +167,8 @@
                 Readme file. If a Readme is created, it will cause conflicts with the
                 Angular CLI Show error picture
             </p>
+         <img src="assets/images/demo/README Exists Error.png" alt="" class="img-fluid image">
+
         </div>
     </div>
 
@@ -296,7 +304,8 @@
               <li>Runtime: Standard</li>
               <li>Image: aws/codebuild/standard:3.0</li>
             </ul>
-          </li>
+            <img src="assets/images/demo/CodeBuild Env.png" alt="CodeBuild Environment" class="img-fluid image">
+        </li>
           <li>
             For Service Role, keep the default selection, New service role. Remember
             the name of the Service Role created for the CodeBuild, it will be
@@ -386,13 +395,16 @@
         </div>
         <ol>
           <li>GitHub - A change is made to the Master Branch</li>
-          <li>CodePipeline - Source Step picks up change using GitHub Hooks</li>
-          <li>CodePipeline - Build Step Calls CodeBuild MattAGreen-CB</li>
+          <li>CodePipeline - Source step picks up change using GitHub Hooks</li>
+          <li>CodePipeline - Build step calls CodeBuild Project to build Angular App</li>
           <li>CodeBuild - Using buildspec.yaml file, builds code</li>
           <li>
             CodeBuild - Using buildspec.yaml file, Copy dist folder to S3 bucket,
           </li>
+          <li>CodePipeline - Completes</li>
         </ol>
+        <img id="success-CP" class="img-fluid image" src="assets/images/demo/Success CodePipeline.png" alt="">
+        <br>
         <p>And that's it!</p>
     </div>
     <div class="testing hiw-section">
@@ -410,6 +422,7 @@
             <li>Click Properties, then click Static website hosting</li>
             <li>In the Static website hosting, click the endpoint link and you should be taken your very S3 Bucket Hosted Angular App!!!</li>
         </ol>
+        <img class="img-fluid image" src="assets/images/demo/Successful S3 Site Launch Page.png" alt="Succesful S3 Bucket">
     </div>
   </div>
 </div>
