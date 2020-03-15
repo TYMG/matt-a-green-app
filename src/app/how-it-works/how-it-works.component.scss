@@ -10,14 +10,14 @@
       rgba($grey, 0.8),
       rgba($cobalt, 0.8)
     ),
-    url(/assets/images/Waterfall__16-9__desktop.jpg);
+    url(/assets/images/profile/Waterfall__16-9__desktop.jpg);
   @include respond(lt-xl) {
     background-image: linear-gradient(
         to right bottom,
         rgba($grey, 0.8),
         rgba($cobalt, 0.8)
       ),
-      url(/assets/images/Waterfall__4-3__tablet.jpg);
+      url(/assets/images/profile/Waterfall__4-3__tablet.jpg);
   }
   @include respond(lt-md) {
     background-image: linear-gradient(
@@ -25,9 +25,12 @@
         rgba($grey, 0.8),
         rgba($cobalt, 0.8)
       ),
-      url(/assets/images/Waterfall__1-1__mobile-mod.jpg);
+      url(/assets/images/profile/Waterfall__1-1__mobile-mod.jpg);
+      padding: 2rem;
   }
-
+  @include respond(lt-sm) {
+    padding: 1rem;
+  }
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -46,15 +49,35 @@
     padding: 2rem 10rem;
     font-size: 1.5rem;
 
+    @include respond(lt-xl) {
+      padding: 1rem 5rem;
+      width: 80%;
+    }
+    @include respond(lt-md) {
+      padding: 1rem 2rem;
+      width: 90%;
+      font-size: 1rem;
+    }
+    @include respond(lt-sm) {
+    }
+
     .hiw-section {
       padding: 2rem 0;
       .sub-section {
         h3 {
-            padding: .5rem 0;
+          padding: 0.5rem 0;
         }
         p {
-            padding: .25rem 0;
+          padding: 0.25rem 0;
         }
+      }
+    }
+
+    a {
+      color: $moss;
+      word-break: break-word;
+      &::selection {
+        background-color: rgba($grey, 1);
       }
     }
 
@@ -63,14 +86,7 @@
       padding-top: 1rem;
       margin-left: 2rem;
 
-      &.moss-links{
-          a {
-              color: $moss;
-
-              &::selection{
-                background-color: rgba($grey, 1),;
-              }
-          }
+      &.moss-links {
       }
     }
     h1 {
@@ -78,19 +94,33 @@
       text-align: center;
     }
 
-    img{
-        padding: 2rem;
-        display: block;
-       
+    img {
+      padding: 2rem;
+      display: block;
 
-        &.xl{
-            width:50%;
-            margin: 0 auto;
+      &.xl {
+        width: 50%;
+        margin: 0 auto;
+
+        @include respond(lt-md) {
+          width: 75%;
         }
-        &.l{
-            width:75%;
-            margin: 0 auto;
+        @include respond(lt-sm) {
+          width: 100%;
         }
+      }
+      &.l {
+        width: 75%;
+        margin: 0 auto;
+
+        @include respond(lt-md) {
+          width: 90%;
+        }
+
+        @include respond(lt-sm) {
+          width: 100%;
+        }
+      }
     }
   }
 }
