@@ -62,6 +62,16 @@
     ol {
       padding-top: 1rem;
       margin-left: 2rem;
+
+      &.moss-links{
+          a {
+              color: $moss;
+
+              &::selection{
+                background-color: rgba($grey, 1),;
+              }
+          }
+      }
     }
     h1 {
       font-size: 5rem;
@@ -70,6 +80,17 @@
 
     img{
         padding: 2rem;
+        display: block;
+       
+
+        &.xl{
+            width:50%;
+            margin: 0 auto;
+        }
+        &.l{
+            width:75%;
+            margin: 0 auto;
+        }
     }
   }
 }

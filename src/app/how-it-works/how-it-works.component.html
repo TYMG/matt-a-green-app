@@ -17,7 +17,7 @@
           sources I used below for more details
         </p>
         <h3>Sources:</h3>
-        <ul>
+        <ul class="moss-links">
           <li>
             <a
               href="https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html"
@@ -61,7 +61,7 @@
             <li>
                 Set Permissions: Uncheck the <i>Block all public access</i>
                 
-                <img src="assets/images/demo/S3 Public Ac.png" alt="" class="img-fluid image">
+                <img src="assets/images/demo/S3 Public Ac.png" alt="" class="img-fluid image l">
                 <p>
                   What does Public mean? Everyone everyone access to one or more of the
                   following: List objects, Write objects, Read and write permissions.
@@ -95,14 +95,14 @@
                   </li>
                   <li>
                       Choose Use this bucket to host a website.
-                      <img src="assets/images/demo/Static Website Hosting Small.jpg" alt="" class="img-fluid image">
+                      <img src="assets/images/demo/Static Website Hosting Small.jpg" alt="" class="img-fluid image xl">
 
                   </li>
                   <li>
                     In the Index Document box, enter index.html Note: If you don't enter the
                     name of your index page, the Save button won't become active, and you
                     won't be able to configure your bucket for static website hosting.
-                    <img src="assets/images/demo/Static Hosting Form.png" alt="" class="img-fluid image">
+                    <img src="assets/images/demo/Static Hosting Form.png" alt="" class="img-fluid image xl">
                   </li>
                 </ol>
 
@@ -165,9 +165,9 @@
                 repository I'm going to skip the details of this step, but when creating the
                 repository, it's important that the repository is not initiated with a
                 Readme file. If a Readme is created, it will cause conflicts with the
-                Angular CLI Show error picture
+                Angular CLI.
             </p>
-         <img src="assets/images/demo/README Exists Error.png" alt="" class="img-fluid image">
+         <img src="assets/images/demo/README Exists Error.png" alt="" class="img-fluid image xl">
 
         </div>
     </div>
@@ -200,19 +200,19 @@
         </div>
         <div class="buildspec">
             <pre ><code>
-                version: 0.2
-        
-                env:
-                variables:
-                  S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
-              APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
-              BUILD_ENV: &quot;prod&quot;
+            version: 0.2
+    
+            env:
+            variables:
+                S3_BUCKET: &quot;MyAppBucket&quot; //Should be the name of S3 bucket created
+                APP_NAME: &quot;MyApp&quot; //The name of the Angular App created
+                BUILD_ENV: &quot;prod&quot;
               
-              phases:
+            phases:
                 install:
-                  runtime-versions:
+                    runtime-versions:
                     nodejs: 10
-                  commands:
+                    commands:
                     # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or 
                     lower, confirm by running ng -v inside your project folder
                     - npm i -g @angular/cli@6.0.8
@@ -221,7 +221,8 @@
               
                 build:
                   commands:
-                    # Builds Angular application. You can also build using custom environment here like mock or staging
+                    # Builds Angular application. You can also build using custom 
+                    environment here like mock or staging
                     - echo Build started on `date`
                     - ng build --$&#123;BUILD_ENV&#125;
               
@@ -296,16 +297,18 @@
           <li>
             Fill out Project Name and Description
           </li>
-          <li>
-            For the Environment Section, keep Environment Image default selection.
-            For the Operating System, I made the following selections:
-            <ul>
-              <li>Operating System: Ubuntu</li>
-              <li>Runtime: Standard</li>
-              <li>Image: aws/codebuild/standard:3.0</li>
-            </ul>
-            <img src="assets/images/demo/CodeBuild Env.png" alt="CodeBuild Environment" class="img-fluid image">
-        </li>
+          <div >
+              <li>
+                For the Environment Section, keep Environment Image default selection.
+                For the Operating System, I made the following selections:
+                <ul>
+                  <li>Operating System: Ubuntu</li>
+                  <li>Runtime: Standard</li>
+                  <li>Image: aws/codebuild/standard:3.0</li>
+                </ul>
+                <img src="assets/images/demo/CodeBuild Env.png" alt="CodeBuild Environment" class="img-fluid image l">
+            </li>
+          </div>
           <li>
             For Service Role, keep the default selection, New service role. Remember
             the name of the Service Role created for the CodeBuild, it will be
