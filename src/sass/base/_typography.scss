@@ -1,5 +1,32 @@
 @import "../abstracts/variables";
+code {
+    color: $moss;
+}
+
 .moss {
     color: $moss;
 }
 
+*::selection {
+    background-color: $moss;
+}
+code::selection{
+    background-color: rgba($grey, 1),;
+}
+
+//Styles the first letter of the p tag
+p::first-letter {
+
+}
+
+pre {
+display: flex;
+
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    overflow-x: scroll;
+    text-align: justify;
+}
