@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    S3_BUCKET: "mattagreen.com"
+    S3_BUCKET: "www.mattagreen.com"
 APP_NAME: "mattagreen"
 BUILD_ENV: "prod"
 
