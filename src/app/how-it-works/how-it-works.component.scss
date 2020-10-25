@@ -26,7 +26,7 @@
         rgba($cobalt, 0.8)
       ),
       url(/assets/images/profile/Waterfall__1-1__mobile-mod.jpg);
-      padding: 2rem;
+    padding: 2rem;
   }
   @include respond(lt-sm) {
     padding: 1rem;
@@ -65,10 +65,10 @@
       padding: 2rem 0;
       .sub-section {
         h3 {
-          padding: 0.5rem 0;
+          padding: 1rem 0;
         }
         p {
-          padding: 0.25rem 0;
+          padding: 0.5rem 0;
         }
       }
     }
@@ -130,7 +130,12 @@
   word-wrap: break-word;
 }
 
-.final-comments{
+.final-comments {
   padding-bottom: 1rem;
   font-size: 1.5rem;
+}
+
+.clarification {
+  background-color: yellow;
+  color: black;
 }
