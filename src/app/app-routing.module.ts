@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainComponent } from './main/main.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 
 const routes: Routes = [
-  { path: '', loadChildren: './mag-app/mag-app.module#MagAppModule' },
+  { path: '', component: MainComponent },
+  { path: 'how-it-works', component: HowItWorksComponent }
+
   //{ path: 'rpdr-fl', loadChildren: './rpdr-fl/rpdr-fl.module#RpdrFlModule' }
 ];
 

@@ -1,0 +1,43 @@
+#home__main {
+}
+
+#home__content-container {
+}
+
+.home__image {
+  width: 80%;
+  height: 75vh;
+}
+
+.home__text {
+  /* Matt Green. Software Developer. */
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 5vh;
+  text-align: center;
+
+  color: #0c0b0b;
+
+  -webkit-text-stroke: 1px #e5e5e5;
+}
+
+.sm-home-text {
+  font-size: 4.5vh;
+}
+
+.xs-home-text {
+  font-size: 4vh;
+}
+
+/* Less than lt-md */
+@media only screen and (max-width: 959px) {
+  .home__image {
+    height: 70vh;
+  }
+
+  .home-text {
+    font-size: 4vh;
+  }
+}
