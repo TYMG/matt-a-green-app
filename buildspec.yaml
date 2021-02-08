@@ -12,7 +12,7 @@ phases:
       nodejs: 10
     commands:
       # Install Angular CLI, If you are not using Angular 6, install angular/cli@1.7.0 or lower, confirm by running ng -v inside your project folder
-      - npm i -g @angular/cli@6.0.8
+      - npm i -g @angular/cli@11.x
       # Install node dependancies.
       - npm i
 
