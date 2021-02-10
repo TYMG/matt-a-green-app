@@ -1,4 +1,9 @@
-@import "main.scss";  
+@import "main.scss";
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+$enable-caret: false;
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -7,6 +12,37 @@ body {
   height: 100%;
   width: 100%;
   background-color: black;
+}
+
+.background-img {
+  height: 100%;
+  position: relative;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($grey, 0.8),
+      rgba($cobalt, 0.8)
+    ),
+    url(/assets/images/profile/Waterfall__16-9__desktop.jpg);
+  @include respond(lt-xl) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($grey, 0.8),
+        rgba($cobalt, 0.8)
+      ),
+      url(/assets/images/profile/Waterfall__4-3__tablet.jpg);
+  }
+  @include respond(lt-md) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($grey, 0.8),
+        rgba($cobalt, 0.8)
+      ),
+      url(/assets/images/profile/Waterfall__1-1__mobile-mod.jpg);
+  }
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .black {
@@ -38,7 +74,26 @@ div.std-cmp-height {
   padding: 5%;
 }
 
-/*Overriding Bootstrap Styles*/
+/**************************************************
+
+Custom Styles
+
+**************************************************/
+
+mag-navbar {
+  z-index: 1000;
+}
+.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  @include respond(lt-md) {
+  }
+}
+
+/**************************************************
+
+Overriding Bootstrap Styles
+
+**************************************************/
+
 .bg-pink {
   background-color: #f3969a !important;
 }
@@ -69,4 +124,36 @@ div.std-cmp-height {
 
 .white {
   color: white;
+}
+
+.mat-icon {
+  margin-top: 5px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.btn-outline-primary {
+  color: white !important;
+  border-color: white !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: $moss !important;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.2rem $moss !important;
+}
+
+.btn-outline-primary {
+  background-color: none !important;
+}
+div.show button.dropdown-toggle.btn.btn-outline-primary {
+  background-color: $moss !important;
+}
+
+.dropdown-item:hover {
+  background-color: $moss !important;
 }
