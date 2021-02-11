@@ -10,12 +10,23 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   animations: [
     trigger("inOutAnimation", [
       transition(":enter", [
-        style({ width: 0, opacity: 0 }),
-        animate("500ms ease-out", style({ width: "50%", opacity: 1 }))
+        style({
+          top: "100px",
+          opacity: 0,
+          color: "$sp-white: rgba(221, 221, 221, 0)"
+        }),
+        animate(
+          "500ms ease-in",
+          style({
+            top: "20px",
+            opacity: 1,
+            color: "$sp-white: rgba(221, 221, 221, 1)"
+          })
+        )
       ]),
       transition(":leave", [
-        style({ width: "50%", opacity: 1 }),
-        animate("500ms ease-in", style({ width: 0, opacity: 0 }))
+        style({ top: "20px", opacity: 1 }),
+        animate("500ms ease-in", style({ top: "100px", opacity: 0 }))
       ])
     ])
   ]
