@@ -14,6 +14,23 @@ body {
   background-color: black;
 }
 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.flex-r {
+  display: flex;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
 .background-img {
   height: 100%;
   position: relative;
@@ -53,6 +70,16 @@ body {
   width: 100%;
 }
 
+.w-50 {
+  width: 50%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
+}
+
 .height-50vh {
   height: 50vh;
 }
@@ -73,7 +100,6 @@ div.std-cmp-height {
 .padding-5 {
   padding: 5%;
 }
-
 /**************************************************
 
 Custom Styles
@@ -156,4 +182,29 @@ div.show button.dropdown-toggle.btn.btn-outline-primary {
 
 .dropdown-item:hover {
   background-color: $moss !important;
+}
+
+/**************************************************
+
+Overriding Angular Material Styles
+
+**************************************************/
+
+.sp-input
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick
+  .mat-form-field-outline-start,
+.sp-input
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick
+  .mat-form-field-outline-end,
+.sp-input
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick
+  .mat-form-field-outline-gap {
+  border-width: 10px !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused.mat-form-field-outline-thick {
+  color: green($color: #000000) !important;
 }

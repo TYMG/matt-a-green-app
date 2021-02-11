@@ -1,0 +1,61 @@
+@import "../../variables.scss";
+
+.sneakpeeker {
+  height: 100%;
+  background-color: $sp-background;
+  padding: 2.5rem;
+  display: flex;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__form {
+    margin: auto 0;
+    padding: 2.5rem;
+    background-color: $sp-background-2;
+    border-radius: 10px;
+
+    p,
+    mat-form-field.mat-form-field.sp-input {
+      font-size: 16px;
+      color: #f5f5f5;
+    }
+
+    mat-form-field.mat-form-field.sp-input.price-input {
+      width: 100%;
+    }
+    mat-form-field.mat-form-field-appearance-outline
+      .mat-form-field-outline-thick {
+      color: greenyellow;
+    }
+    .sneakpeeker-submit {
+      display: flex;
+
+      button {
+        margin: 0 auto;
+
+        width: 50%;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+.mat-button.submit-btn {
+  background-color: $sp-red;
+  color: #f5f5f5;
+  font-size: 24px;
+  width: 25%;
+}
+
+.mat-button.submit-btn.disabled {
+  background-color: #cccccc;
+  color: $sp-background;
+}

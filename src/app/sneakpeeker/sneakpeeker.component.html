@@ -1,0 +1,62 @@
+<div class="sneakpeeker">
+  <h1>
+    SneakPeeker
+  </h1>
+  <div class="sneakpeeker__content">
+    <div class="sneakpeeker__form" [formGroup]="SP_FG">
+      <h2>Email</h2>
+      <mat-form-field class="sp-input w-100" appearance="outline">
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex. matt@example.com"
+        />
+      </mat-form-field>
+      <div>
+        <p>
+          Please provide at least one filter Criteria: Keywords and/or Price
+        </p>
+      </div>
+      <h2>Keywords</h2>
+      <mat-form-field class="sp-input w-100" appearance="outline">
+        <textarea
+          type="text"
+          matInput
+          formControlName="keywords"
+          placeholder="Ex. matt@example.com"
+        ></textarea>
+      </mat-form-field>
+      <h2>Price</h2>
+      <div class="flex-r space-between">
+        <div class="price">
+          <h3>Min</h3>
+          <mat-form-field class="sp-input price-input" appearance="outline">
+            <input
+              type="text"
+              matInput
+              formControlName="min_price"
+              placeholder="Price in Number"
+            />
+          </mat-form-field>
+        </div>
+        <div class="price">
+          <h3>Max</h3>
+          <mat-form-field class="sp-input price-input" appearance="outline">
+            <input
+              type="text"
+              matInput
+              formControlName="max_price"
+              placeholder="Price in Number"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="sneakpeeker-submit">
+        <button mat-button class="submit-btn" [disabled]="SP_FG.invalid">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
