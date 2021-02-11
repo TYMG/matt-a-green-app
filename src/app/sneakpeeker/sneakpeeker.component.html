@@ -1,9 +1,9 @@
 <div class="sneakpeeker">
-  <h1>
-    SneakPeeker
-  </h1>
   <div class="sneakpeeker__content">
     <div class="sneakpeeker__form" [formGroup]="SP_FG">
+      <h1>
+        SneakPeeker
+      </h1>
       <h2>Email</h2>
       <mat-form-field class="sp-input w-100" appearance="outline">
         <input
@@ -24,7 +24,7 @@
           type="text"
           matInput
           formControlName="keywords"
-          placeholder="Ex. matt@example.com"
+          placeholder="Ex. 'Air Max 95' or 'Foamposite'"
         ></textarea>
       </mat-form-field>
       <h2>Price</h2>
@@ -53,7 +53,13 @@
         </div>
       </div>
       <div class="sneakpeeker-submit">
-        <button mat-button class="submit-btn" [disabled]="SP_FG.invalid">
+        <button
+          *ngIf="validForm && email.valid"
+          [@inOutAnimation]
+          mat-button
+          class="submit-btn"
+          [disabled]=""
+        >
           Submit
         </button>
       </div>
