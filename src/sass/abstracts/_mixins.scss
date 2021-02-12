@@ -55,6 +55,11 @@ gt-lg	'screen and (min-width: 1920px)'
       @content;
     } //600px
   }
+  @if $breakpoint == lt-xs {
+    @media only screen and (max-width: 375px) {
+      @content;
+    }
+  }
   @if $breakpoint == lt-sm {
     @media only screen and (max-width: 599px) {
       @content;
@@ -140,5 +145,3 @@ gt-lg	'screen and (min-width: 1920px)'
     font-size: 2.5rem;
   }
 }
-
-

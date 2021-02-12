@@ -23,7 +23,7 @@
       width: 100%;
       padding: 2.5rem;
       bottom: 0;
-      top: 0;
+      top: 5rem;
       left: 0;
       margin: 0 auto;
     }
@@ -63,6 +63,10 @@
     }
     @include respond(lt-sm) {
       font-size: 7rem;
+    }
+
+    @include respond(lt-xs) {
+      line-height: 0.85;
     }
   }
 
