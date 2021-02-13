@@ -1,6 +1,11 @@
 import { animate, style, transition, trigger } from "@angular/animations";
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ApiService } from "../services/api.service";
+import { SneakPeekerEmailDto } from "../models/sneakpeeker-email-dto.model";
+import { catchError, map, tap } from "rxjs/operators";
+import { cpuUsage } from "process";
+import { throwError } from "rxjs";
 
 @Component({
   selector: "mag-sneakpeeker",
@@ -41,13 +46,36 @@ export class SneakpeekerComponent implements OnInit {
 
   validForm: boolean;
 
-  constructor() {}
+  constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.SP_FG.valueChanges.subscribe(_ => {
       this.validForm =
         this.keywords.value || this.max_price.value || this.min_price.value;
     });
+  }
+
+  submitForm(event) {
+    console.log(event);
+    let form = this.SP_FG.value;
+
+    /* this.api
+      .generateSPEmail(spDto)
+      .pipe(
+        tap(res => console.log(res)),
+        catchError(err => {
+          console.log("Error Thrown!!! : err");
+          return throwError(err);
+        })
+      )
+      .subscribe(
+        res => {
+          //Display Success Modal
+        },
+        err => {
+          //Display Failure Modal
+        }
+      ); */
   }
 
   get email() {

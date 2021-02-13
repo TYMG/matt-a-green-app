@@ -5,7 +5,7 @@
 // Reference: https://github.com/cornflourblue/angular-6-registration-login-example-cli/blob/master/src/environments/environment.ts#L7
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4000'
+  apiUrl: "http://localhost:3000"
 };
 
 /*

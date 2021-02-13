@@ -1,6 +1,10 @@
 export interface SneakPeekerEmailDto {
   email: string;
-  criteria: SneakPeekerCriteriaDto;
+  criteria: {
+    keywords: string[];
+    max_price: number;
+    min_price: number;
+  };
 }
 
 export interface SneakPeekerCriteriaDto {

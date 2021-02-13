@@ -1,34 +1,36 @@
 <div class="sneakpeeker">
   <div class="sneakpeeker__content">
-    <div class="sneakpeeker__form" [formGroup]="SP_FG">
-      <h1>
-        SneakPeeker
-      </h1>
-      <h2>Email</h2>
-      <mat-form-field class="sp-input w-100" appearance="outline">
-        <input
-          type="email"
-          matInput
-          formControlName="email"
-          placeholder="Ex. matt@example.com"
-        />
-      </mat-form-field>
-      <div>
-        <p>
-          Please provide at least one filter Criteria: Keywords and/or Price
-        </p>
+    <form class="sneakpeeker__form form" [formGroup]="SP_FG">
+      <h1 class="form__title">Sneak<span class="sp-red">Peek</span>er</h1>
+      <div class="form__section">
+        <h2>Email</h2>
+        <mat-form-field class="sp-input w-100" appearance="outline">
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Ex. matt@example.com"
+          />
+        </mat-form-field>
+        <div>
+          <p>
+            Please provide at least one filter Criteria: Keywords and/or Price
+          </p>
+        </div>
       </div>
-      <h2>Keywords</h2>
-      <mat-form-field class="sp-input w-100" appearance="outline">
-        <textarea
-          type="text"
-          matInput
-          formControlName="keywords"
-          placeholder="Ex. 'Air Max 95' or 'Foamposite'"
-        ></textarea>
-      </mat-form-field>
+      <div class="form__section">
+        <h2>Keywords</h2>
+        <mat-form-field class="sp-input w-100" appearance="outline">
+          <textarea
+            type="text"
+            matInput
+            formControlName="keywords"
+            placeholder="Ex. 'Air Max 95' or 'Foamposite'"
+          ></textarea>
+        </mat-form-field>
+      </div>
       <h2>Price</h2>
-      <div class="flex-r space-around">
+      <div class="form__price">
         <div class="price">
           <h3>Min</h3>
           <mat-form-field class="sp-input price-input" appearance="outline">
@@ -40,20 +42,24 @@
             />
           </mat-form-field>
         </div>
-        <div class="price">
-          <h3>Max</h3>
-          <mat-form-field class="sp-input price-input" appearance="outline">
-            <input
-              type="text"
-              matInput
-              formControlName="max_price"
-              placeholder="Price in Number"
-            />
-          </mat-form-field>
+        <div class="form__section">
+          <div class="price">
+            <h3>Max</h3>
+            <mat-form-field class="sp-input price-input" appearance="outline">
+              <input
+                type="text"
+                matInput
+                formControlName="max_price"
+                placeholder="Price in Number"
+              />
+            </mat-form-field>
+          </div>
         </div>
       </div>
-      <div class="sneakpeeker-submit">
+      <div class="form__submit">
         <button
+          type="submit"
+          (click)="submitForm($event)"
           *ngIf="validForm && email.valid"
           [@inOutAnimation]
           mat-button
@@ -63,6 +69,6 @@
           Submit
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
