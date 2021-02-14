@@ -1,7 +1,11 @@
 @import "./sass/main";
+//Custom Theme
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
 
-/* Importing Bootstrap SCSS file. */
+@import "./mag-theme.scss";
 @import "~bootstrap/scss/bootstrap";
+
+@import "~@angular/material/theming";
 
 $enable-caret: false;
 
@@ -191,6 +195,46 @@ Overriding Angular Material Styles
 
 **************************************************/
 
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+.ng-touched::-webkit-input-placeholder {
+  color: $grey-2;
+}
+.ng-untouched::-webkit-input-placeholder {
+  color: $grey-2;
+}
+.mat-input-invalid .mat-input-placeholder {
+  color: red;
+}
+
+.mat-input-invalid .mat-input-ripple {
+  background-color: red;
+}
+
+.mat-input-element.cdk-text-field-autofill-monitored.ng-touched.ng-dirty.ng-invalid {
+  .mat-form-field-outline-start,
+  .mat-form-field-outline-gap,
+  .mat-form-field-outline-end {
+    border-color: $sp-red;
+  }
+}
+$custom-typography: mat-typography-config(
+  $font-family: "'Nunito', sans-serif;",
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+@include mat-core($custom-typography);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+// ? added
+
+// Include the dark color styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.dark-theme` will be affected by this alternate dark theme instead of the default theme.
 /* mat-form-field.sp-input
   .mat-form-field-appearance-outline
   .mat-form-field-outline-thick
