@@ -58,8 +58,15 @@ export class SneakpeekerComponent implements OnInit {
   submitForm(event) {
     console.log(event);
     let form = this.SP_FG.value;
-
-    /* this.api
+    let spDto: SneakPeekerEmailDto = {
+      email: form["email"],
+      criteria: {
+        keywords: form["keywords"].split(",").map(str => str.trim()),
+        max_price: form["max_price"],
+        min_price: form["min_price"]
+      }
+    };
+    this.api
       .generateSPEmail(spDto)
       .pipe(
         tap(res => console.log(res)),
@@ -71,11 +78,12 @@ export class SneakpeekerComponent implements OnInit {
       .subscribe(
         res => {
           //Display Success Modal
+          console.log(res);
         },
         err => {
           //Display Failure Modal
         }
-      ); */
+      );
   }
 
   get email() {
