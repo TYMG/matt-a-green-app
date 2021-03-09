@@ -1,35 +1,6 @@
 @import "main";
 
 .main {
-  height: 100%;
-  position: relative;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba($grey, 0.8),
-      rgba($cobalt, 0.8)
-    ),
-    url(/assets/images/profile/Waterfall__16-9__desktop.jpg);
-  @include respond(lt-xl) {
-    background-image: linear-gradient(
-        to right bottom,
-        rgba($grey, 0.8),
-        rgba($cobalt, 0.8)
-      ),
-      url(/assets/images/profile/Waterfall__4-3__tablet.jpg);
-  }
-  @include respond(lt-md) {
-    background-image: linear-gradient(
-        to right bottom,
-        rgba($grey, 0.8),
-        rgba($cobalt, 0.8)
-      ),
-      url(/assets/images/profile/Waterfall__1-1__mobile-mod.jpg);
-  }
-
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
   &-content {
     position: absolute;
     //background-color: rgba(175, 238, 238, 0.39);
@@ -52,7 +23,7 @@
       width: 100%;
       padding: 2.5rem;
       bottom: 0;
-      top: 0;
+      top: 5rem;
       left: 0;
       margin: 0 auto;
     }
@@ -63,12 +34,12 @@
     //background-color: rgba(175, 238, 238, 0.39);
     bottom: 1%;
     right: 5%;
-font-size: 1.5rem;
+    font-size: 1.5rem;
 
-    @include respond(gt-md){
-        font-size: 2rem;
+    @include respond(gt-md) {
+      font-size: 2rem;
     }
-              
+
     div {
       display: flex;
       justify-content: flex-end;
@@ -92,6 +63,10 @@ font-size: 1.5rem;
     }
     @include respond(lt-sm) {
       font-size: 7rem;
+    }
+
+    @include respond(lt-xs) {
+      line-height: 0.85;
     }
   }
 
@@ -117,4 +92,8 @@ font-size: 1.5rem;
   height: auto;
   width: 100%;
   max-width: 5rem;
+}
+
+mag-navbar {
+  z-index: 1000;
 }

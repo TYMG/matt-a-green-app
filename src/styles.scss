@@ -1,4 +1,13 @@
-@import "main.scss";  
+@import "./sass/main";
+//Custom Theme
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
+
+@import "./mag-theme.scss";
+@import "~bootstrap/scss/bootstrap";
+
+@import "~@angular/material/theming";
+
+$enable-caret: false;
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -9,6 +18,49 @@ body {
   background-color: black;
 }
 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.space-around {
+  justify-content: space-around;
+}
+
+.background-img {
+  height: 100%;
+  position: relative;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($grey, 0.8),
+      rgba($cobalt, 0.8)
+    ),
+    url(/assets/images/profile/Waterfall__16-9__desktop.jpg);
+  @include respond(lt-xl) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($grey, 0.8),
+        rgba($cobalt, 0.8)
+      ),
+      url(/assets/images/profile/Waterfall__4-3__tablet.jpg);
+  }
+  @include respond(lt-md) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($grey, 0.8),
+        rgba($cobalt, 0.8)
+      ),
+      url(/assets/images/profile/Waterfall__1-1__mobile-mod.jpg);
+  }
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 .black {
   background-color: black;
 }
@@ -17,6 +69,22 @@ body {
   width: 100%;
 }
 
+.w-50 {
+  width: 50%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-100 {
+  width: 100%;
+}
+
+.height-10vh {
+  height: 10vh;
+}
+.height-25vh {
+  height: 25vh;
+}
 .height-50vh {
   height: 50vh;
 }
@@ -37,8 +105,26 @@ div.std-cmp-height {
 .padding-5 {
   padding: 5%;
 }
+/**************************************************
 
-/*Overriding Bootstrap Styles*/
+Custom Styles
+
+**************************************************/
+
+mag-navbar {
+  z-index: 1000;
+}
+.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  @include respond(lt-md) {
+  }
+}
+
+/**************************************************
+
+Overriding Bootstrap Styles
+
+**************************************************/
+
 .bg-pink {
   background-color: #f3969a !important;
 }
@@ -70,3 +156,110 @@ div.std-cmp-height {
 .white {
   color: white;
 }
+
+.mat-icon {
+  margin-top: 5px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.btn-outline-primary {
+  color: white !important;
+  border-color: white !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: $moss !important;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.2rem $moss !important;
+}
+
+.btn-outline-primary {
+  background-color: none !important;
+}
+div.show button.dropdown-toggle.btn.btn-outline-primary {
+  background-color: $moss !important;
+}
+
+.dropdown-item:hover {
+  background-color: $moss !important;
+}
+
+/**************************************************
+
+Overriding Angular Material Styles
+
+**************************************************/
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+.ng-touched::-webkit-input-placeholder {
+  color: $grey-2;
+}
+.ng-untouched::-webkit-input-placeholder {
+  color: $grey-2;
+}
+.mat-input-invalid .mat-input-placeholder {
+  color: red;
+}
+
+.mat-input-invalid .mat-input-ripple {
+  background-color: red;
+}
+
+.mat-input-element.cdk-text-field-autofill-monitored.ng-touched.ng-dirty.ng-invalid {
+  .mat-form-field-outline-start,
+  .mat-form-field-outline-gap,
+  .mat-form-field-outline-end {
+    border-color: $sp-red;
+  }
+}
+$custom-typography: mat-typography-config(
+  $font-family: "'Nunito', sans-serif;",
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+@include mat-core($custom-typography);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+// ? added
+
+// Include the dark color styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.dark-theme` will be affected by this alternate dark theme instead of the default theme.
+/* mat-form-field.sp-input
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick
+  .mat-form-field-outline-start,
+mat-form-field.sp-input
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick
+  .mat-form-field-outline-end,
+mat-form-field.sp-input
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick
+  .mat-form-field-outline-gap {
+  border-width: 10px !important;
+}
+
+mat-form-field.mat-focused .mat-form-field-outline-thick:hover,
+mat-form-field.mat-focused .mat-form-field-outline-start:hover,
+mat-form-field.mat-focused .mat-form-field-outline-end:hover {
+  border-width: 10px !important;
+}
+
+::deep.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  border-width: 10px !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused.mat-form-field-outline-thick {
+  color: green($color: #000000) !important;
+} */
